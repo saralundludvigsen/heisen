@@ -6,10 +6,7 @@
 //
 //
 
-
-//pån igjen
-//og igjen
-
+//changes!!!!
 #include "elev.h"
 
 // Wrapper for libComedi Elevator control.
