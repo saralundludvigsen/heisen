@@ -6,8 +6,6 @@
 //
 //
 
-#include "main2.h"
-
 #include "elev.h"
 #include "channels.h"
 #include <stdio.h>
