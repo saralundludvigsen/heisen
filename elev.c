@@ -6,7 +6,7 @@
 //
 //
 
-//changes!!!!
+//Cold cold heart
 #include "elev.h"
 
 // Wrapper for libComedi Elevator control.
