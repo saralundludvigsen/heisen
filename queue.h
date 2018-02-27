@@ -1,6 +1,15 @@
-//queue header
-//functions 
-#include "FSM.h"
+//
+//  queue.h
+//  Heis
+//
+//  Created by Sara Lund Ludvigsen on 27.02.2018.
+//  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
+//
+
+#ifndef queue_h
+#define queue_h
+
+#include <stdio.h>
 
 //initialiserer køen, dvs. setter alle elementene til 0.
 void initialize_queue();
@@ -23,3 +32,4 @@ void empty_queue();
 bool is_order(button_type button, int floor);
 
 
+#endif /* queue_h */
