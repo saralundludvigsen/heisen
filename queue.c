@@ -11,12 +11,7 @@
 
 #define N_BUTTONS 3
 //kø-matrise
-static int queue[N_FLOORS][N_BUTTONS] = {
-    {BUTTON_UP1, BUTTON_DOWN1, BUTTON_COMMAND1},
-    {BUTTON_UP2, BUTTON_DOWN2, BUTTON_COMMAND2},
-    {BUTTON_UP3, BUTTON_DOWN3, BUTTON_COMMAND3},
-    {BUTTON_UP4, BUTTON_DOWN4, BUTTON_COMMAND4},
-};
+static int queue[N_FLOORS][N_BUTTONS];
 
 void initialize_queue(){
     for(int i=0;i<N_FLOORS;i++){
