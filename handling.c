@@ -38,6 +38,4 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction){
     }
     
 }
-int test(){
-    print("heisann");
-}
+
