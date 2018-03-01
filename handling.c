@@ -10,7 +10,15 @@
 
 
 elev_motor_direction_t get_direction(int floor_in, int floor_to){
-
+	if (floor_in < floor_to) {
+		return DIRN_UP;
+	}
+	else if (floor_in > floor_to) {
+		return DIRN_DOWN;
+	}
+	else {
+		return DIRN_STOP; //(?)
+	}
 
 }
 
