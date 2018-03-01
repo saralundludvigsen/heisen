@@ -15,14 +15,14 @@
 static State state;
 
 int main() {
-
+	printf("Programmet kjører!");
 
 	if (elev_init() == 0) {
 		printf("Unable to initialize elevator hardware!\n");
 		return 1;
 	}
 	// beholder etter initialisering. startbetingelse
-	elev_set_motor_direction(DIRN_STOP);
+	elev_set_motor_direction(DIRN_UP);
 	//------------------------------------------------------------------------------
 	state = stop;
 	while (1) {
