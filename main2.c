@@ -15,11 +15,6 @@
 #include "FSM.h"
 static State state;
 
-<<<<<<< HEAD
-//hei på deg!!!!!!!!!!!!
-=======
-//Dette er Sara sin kommentar
->>>>>>> a13542464f4e78af347f84a36de74fe791d3c5fd
 
 int main() {
     
