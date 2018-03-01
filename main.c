@@ -32,8 +32,6 @@ int main() {
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
-
-		else if ()
 		
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
