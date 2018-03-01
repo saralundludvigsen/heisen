@@ -46,6 +46,7 @@ int main() {
 
 		
 		if (state == stop_door_open){
+			printf("stop_door_open");
 			event_stop_door_open();
 		}
 		else if (state == drive){
