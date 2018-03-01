@@ -21,7 +21,7 @@ int main() {
 		return 1;
 	}
 	// beholder etter initialisering. startbetingelse
-	elev_set_motor_direction(DIRN_STOP);
+	elev_set_motor_direction(DIRN_UP);
 	//------------------------------------------------------------------------------
 	state = stop;
 	while (1) {
