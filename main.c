@@ -52,8 +52,7 @@ int main() {
 			event_drive();
 		}
 		else if (!queue_is_empty()){
-			printf("queue not empty!");
-			elev_set_motor_direction(DIRN_UP);
+			//elev_set_motor_direction(DIRN_UP);
 			//event_queue_not_empty();
 		}
 		else if (queue_is_empty()){
