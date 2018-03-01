@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include "elev.h"
 #include "FSM.h"
-
+typedef enum button_type;
 #define N_BUTTONS 3
 
 //initialiserer køen, dvs. setter alle elementene til 0.
