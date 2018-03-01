@@ -35,9 +35,9 @@ int main() {
 		
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
-				elev_button_type_t emma = (elev_button_type_t) j;
+				elev_button_type_t kjersti = (elev_button_type_t) j;
 				button_type sara = (button_type) j;
-				if (elev_get_button_signal(emma, i)){
+				if (elev_get_button_signal(kjersti, i)){
 					printf("got signal!");
 					event_button_pushed(i, (sara));
 				}
