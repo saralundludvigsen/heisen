@@ -36,9 +36,9 @@ int main() {
         }
         
         for(int i = 0; i < N_FLOORS; i++){
-            for(int j = 0; j < N_BUTTONS; j++){
-                if (elev_get_button_signal(button_type(j), i)){
-                    event_button_pushed(button_type(j), i);
+            for(button_type j = BUTTON_UP; j <= BUTTON_COM; j++){
+                if (elev_get_button_signal(j, i)){
+                    event_button_pushed(j, i);
                 }
             }
         }

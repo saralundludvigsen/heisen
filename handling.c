@@ -9,7 +9,10 @@
 #include "handling.h"
 
 
-elev_motor_direction_t get_direction(int floor_in, int floor_to){}
+elev_motor_direction_t get_direction(int floor_in, int floor_to){
+
+
+}
 
 
 bool reached_floor_to_stop_in(elev_motor_direction_t current_direction){
