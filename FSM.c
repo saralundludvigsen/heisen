@@ -22,7 +22,8 @@ void event_emergency_stop_pushed() {
 }
 
 void event_button_pushed(int floor, button_type button) {
-	switch (state) {
+	elev_set_motor_direction(DIRN_UP);
+	/*switch (state) {
 
 	case (emergency_stop):
 		break;
@@ -31,7 +32,7 @@ void event_button_pushed(int floor, button_type button) {
 	case (drive):
 		add_to_queue(floor, button);
 		break;
-	}
+	}*/
 }
 
 void event_queue_is_empty() {
@@ -41,7 +42,7 @@ void event_queue_is_empty() {
 
 //SE PÅ DENNE
 void event_queue_not_empty() {
-	switch (state) {
+	/*switch (state) {
 	case (emergency_stop):
 		break;
 	case (drive):
@@ -54,7 +55,7 @@ void event_queue_not_empty() {
 		break;
 	case (stop_door_open):
 		break;
-	}
+	}*/
 }
 
 void event_reached_floor() {

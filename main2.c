@@ -43,7 +43,7 @@ int main() {
             }
         }
         
-        
+        /*
         if (state == stop_door_open){
             event_stop_door_open();
         }
@@ -56,7 +56,7 @@ int main() {
         
         else if(reached_floor_to_stop_in()){
             event_reached_floor();
-        }
+        }*/
     }
     return 0;
 }
