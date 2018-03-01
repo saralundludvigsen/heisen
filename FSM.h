@@ -32,7 +32,7 @@ typedef enum buttontype{
 
 
 void event_emergency_stop_pushed();
-void event_button_pushed(int floor, button_type button);
+void event_button_pushed(int floor, enum button_type button);
 void event_queue_is_empty();
 void event_queue_not_empty();
 void event_reached_floor();

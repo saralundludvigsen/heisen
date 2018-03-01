@@ -22,7 +22,7 @@ void initialize_queue(){
     }
 }
 
-void add_to_queue(button_type button, int floor){
+void add_to_queue(enum button_type button, int floor){
     //forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
     queue[floor][button]=1;
 }
@@ -56,7 +56,7 @@ void remove_from_queue(int floor){
             }
         }
         
-        bool is_order(button_type button, int floor){
+        bool is_order(enum button_type button, int floor){
             return queue[floor][button];
         }
 
