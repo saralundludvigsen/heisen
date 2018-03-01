@@ -16,21 +16,18 @@ static State state;
 
 int main() {
 
-	printf("heiheihei");
 
 	if (elev_init() == 0) {
 		printf("Unable to initialize elevator hardware!\n");
 		return 1;
 	}
 	// beholder etter initialisering. startbetingelse
-	elev_set_motor_direction(DIRN_UP);
+	elev_set_motor_direction(DIRN_STOP);
 	//------------------------------------------------------------------------------
-	//state = stop;
+	state = stop;
 	while (1) {
-		printf("heisann");
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
-		elev_set_motor_direction(DIRN_UP);
 		if (elev_get_button_signal(BUTTON_CALL_UP, 1) == 1) {
 			elev_set_motor_direction(DIRN_UP);
 		}
