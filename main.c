@@ -6,12 +6,11 @@
 //
 //
 
-
+#include "FSM.h"
 #include "elev.h"
 #include "channels.h"
 #include <stdio.h>
 #include "queue.h"
-#include "FSM.h"
 #include "handling.h"
 static State state;
 

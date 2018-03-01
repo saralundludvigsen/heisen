@@ -5,9 +5,8 @@
 //  Created by Sara Lund Ludvigsen on 27.02.2018.
 //  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
 //
-
-#include "queue.h"
 #include "FSM.h"
+#include "queue.h"
 
 //queue c-file
 

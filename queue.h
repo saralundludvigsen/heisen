@@ -11,8 +11,8 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "elev.h"
 #include "FSM.h"
+#include "elev.h"
 #define N_BUTTONS 3
 
 
