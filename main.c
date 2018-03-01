@@ -35,7 +35,7 @@ int main() {
 		if (elev_get_stop_signal()) {
 			event_emergency_stop_pushed();
 		}
-
+		
 		/*for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
 				if (elev_get_button_signal(static_cast<elev_button_type_t>(j), i)){

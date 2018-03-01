@@ -21,7 +21,7 @@ void initialize_queue();
 
 //if button is pushed, call this function
 //NB 0-indeksert floor
-void add_to_queue(enum button_type button, int floor);
+void add_to_queue(button_type button, int floor);
 
 //Fjerner en etasje fra køen.
 //Dvs. setter alle 3 knapper i kø til 0
@@ -34,7 +34,7 @@ bool queue_is_empty();
 void empty_queue();
 
 //sjekker knappen _i køen_, om den er bestilt dit
-bool is_order(enum button_type button, int floor);
+bool is_order(button_type button, int floor);
 
 
 #endif /* queue_h */
