@@ -28,10 +28,10 @@ int main() {
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
 
-		if (elev_get_button_signal(BUTTON_CALL_UP, 1)) {
+		if (elev_get_button_signal(BUTTON_CALL_UP, 1) == 1) {
 			elev_set_motor_direction(DIRN_UP);
 		}
-		if (elev_get_stop_signal()) {
+		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
 		
