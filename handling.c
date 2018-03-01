@@ -19,7 +19,6 @@ elev_motor_direction_t get_direction(int floor_in, int floor_to) {
 	else {
 		return DIRN_STOP; //(?)
 	}
-
 }
 
 
