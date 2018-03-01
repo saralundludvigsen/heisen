@@ -38,6 +38,7 @@ int main() {
 				elev_button_type_t emma = (elev_button_type_t) j;
 				button_type sara = (button_type) j;
 				if (elev_get_button_signal(emma, i)){
+					printf("got signal!");
 					event_button_pushed(i, (sara));
 				}
 			}
@@ -51,6 +52,7 @@ int main() {
 			event_drive();
 		}
 		else if (!queue_is_empty()){
+			printf("queue not empty!");
 			elev_set_motor_direction(DIRN_UP);
 			//event_queue_not_empty();
 		}
