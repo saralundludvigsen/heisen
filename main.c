@@ -14,7 +14,6 @@
 #include "FSM.h"
 #include "handling.h"
 static State state;
-typedef enum button_type;
 
 int main() {
     

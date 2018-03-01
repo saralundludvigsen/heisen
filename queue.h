@@ -13,8 +13,12 @@
 #include <stdbool.h>
 #include "elev.h"
 #include "FSM.h"
-typedef enum button_type;
 #define N_BUTTONS 3
+typedef enum button_type {
+	BUTTON_UP,
+	BUTTON_DOWN,
+	BUTTON_COM
+} button_type;
 
 //initialiserer køen, dvs. setter alle elementene til 0.
 void initialize_queue();
