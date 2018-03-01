@@ -15,7 +15,7 @@
 static State state;
 
 int main() {
-
+    
 	if (elev_init() == 0) {
 		printf("Unable to initialize elevator hardware!\n");
 		return 1;
