@@ -24,7 +24,7 @@ typedef enum states{
 
 
 //knappetyper
-typedef enum button_type{
+typedef enum buttontype{
     BUTTON_UP,
     BUTTON_DOWN,
     BUTTON_COM
