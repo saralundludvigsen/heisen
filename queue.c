@@ -15,50 +15,50 @@
 //kø-matrise
 static int queue[N_FLOORS][N_BUTTONS];
 
-void initialize_queue(){
-    for(int i=0;i<N_FLOORS;i++){
-        for(int j=0;j<N_BUTTONS;j++){
-            queue[i][j]=0;
-        }
-    }
+void initialize_queue() {
+	for (int i = 0; i < N_FLOORS; i++) {
+		for (int j = 0; j < N_BUTTONS; j++) {
+			queue[i][j] = 0;
+		}
+	}
 }
 
-void add_to_queue(button_type button, int floor){
-    //forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
-    queue[floor][button]=1;
+void add_to_queue(enum button_type button, int floor) {
+	//forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
+	queue[floor][button] = 1;
 }
 
-void remove_from_queue(int floor){
-    //forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
-    for(int i=0;i<N_BUTTONS;i++){
-        queue[floor][i]=0;
-    }
-        }
-        
-        
-        bool queue_is_empty(){
-            for(int i=0;i<N_FLOORS;i++){
-                for(int j=0;j<N_BUTTONS;j++){
-                    if(queue[i][j]){
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-        
-        void empty_queue(){
-            for(int i=0;i<N_FLOORS;i++){
-                for(int j=0;j<N_BUTTONS;j++){
-                    if(queue[i][j]){
-                        queue[i][j]=0;
-                    }
-                }
-            }
-        }
-        
-        bool is_order(button_type button, int floor){
-            return queue[floor][button];
-        }
+void remove_from_queue(int floor) {
+	//forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
+	for (int i = 0; i < N_BUTTONS; i++) {
+		queue[floor][i] = 0;
+	}
+}
+
+
+bool queue_is_empty() {
+	for (int i = 0; i < N_FLOORS; i++) {
+		for (int j = 0; j < N_BUTTONS; j++) {
+			if (queue[i][j]) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+void empty_queue() {
+	for (int i = 0; i < N_FLOORS; i++) {
+		for (int j = 0; j < N_BUTTONS; j++) {
+			if (queue[i][j]) {
+				queue[i][j] = 0;
+			}
+		}
+	}
+}
+
+bool is_order(enum button_type button, int floor) {
+	return queue[floor][button];
+}
 
 

@@ -21,7 +21,7 @@ void event_emergency_stop_pushed() {
 	state = emergency_stop;
 }
 
-void event_button_pushed(int floor, button_type button) {
+void event_button_pushed(int floor, enum button_type button) {
 	elev_set_motor_direction(DIRN_UP);
 	/*switch (state) {
 

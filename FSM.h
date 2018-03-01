@@ -15,24 +15,24 @@
 #include "queue.h"
 
 
-typedef enum states{
-    emergency_stop,
-    drive,
-    stop_door_open,
-    stop
+typedef enum states {
+	emergency_stop,
+	drive,
+	stop_door_open,
+	stop
 } State;
 
 
 //knappetyper
-typedef enum button_type{
-    BUTTON_UP,
-    BUTTON_DOWN,
-    BUTTON_COM
-} button_type;
+enum button_type {
+	BUTTON_UP,
+	BUTTON_DOWN,
+	BUTTON_COM
+};
 
 
 void event_emergency_stop_pushed();
-void event_button_pushed(int floor, button_type button);
+void event_button_pushed(int floor, enum button_type button);
 void event_queue_is_empty();
 void event_queue_not_empty();
 void event_reached_floor();
