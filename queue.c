@@ -44,7 +44,8 @@ bool queue_is_empty() {
 	}
 	return true;
 }
-
+//her setter vi alle elementer i queue til 0, som betyr at det finnes noe der, og 
+//queue_is_empty() vil returnere false.
 void empty_queue() {
 	for (int i = 0; i < N_FLOORS; i++) {
 		for (int j = 0; j < N_BUTTONS; j++) {

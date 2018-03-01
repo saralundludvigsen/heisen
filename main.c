@@ -52,12 +52,14 @@ int main() {
 			event_drive();
 		}
 		else if (!queue_is_empty()){
+			//Her bare tester man om det har blitt lagt til noe i queue
 			elev_set_motor_direction(DIRN_UP);
 			//event_queue_not_empty();
 		}
 		else if (queue_is_empty()){
 			event_queue_is_empty();
 		}
+
 		/*
 		else if(reached_floor_to_stop_in()){
 			event_reached_floor();
