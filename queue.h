@@ -5,7 +5,7 @@
 //  Created by Sara Lund Ludvigsen on 27.02.2018.
 //  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
 //
-
+#pragma once
 #ifndef queue_h
 #define queue_h
 

@@ -6,6 +6,7 @@
 //  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
 //
 
+#pragma once
 #ifndef handling_h
 #define handling_h
 
