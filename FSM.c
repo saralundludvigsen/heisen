@@ -22,14 +22,13 @@ void event_emergency_stop_pushed() {
 }
 
 void event_button_pushed(int floor, button_type button) {
-	elev_set_motor_direction(DIRN_UP);
 	switch (state) {
 
 	case (emergency_stop):
 		break;
 	case(stop):
 	case(stop_door_open):
-	case (drive):
+	case(drive):
 		add_to_queue(floor, button);
 		break;
 	}

@@ -32,6 +32,8 @@ int main() {
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
+
+		else if ()
 		
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
@@ -51,16 +53,17 @@ int main() {
 			event_drive();
 		}
 		else if (!queue_is_empty()){
-			event_queue_not_empty();
+			elev_set_motor_direction(DIRN_UP);
+			//event_queue_not_empty();
 		}
 		else if (queue_is_empty()){
 			event_queue_is_empty();
 		}
-		
+		/*
 		else if(reached_floor_to_stop_in()){
 			event_reached_floor();
 		}
-	}
+	}*/
 	return 0;
 }
 
