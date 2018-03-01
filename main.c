@@ -35,15 +35,15 @@ int main() {
 			event_emergency_stop_pushed();
 		}
 		
-		/*for(int i = 0; i < N_FLOORS; i++){
+		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
 				if (elev_get_button_signal(static_cast<elev_button_type_t>(j), i)){
 					event_button_pushed(i, static_cast<button_type>(j));
 				}
 			}
-		}*/
+		}
 
-		/*
+		
 		if (state == stop_door_open){
 			event_stop_door_open();
 		}
@@ -56,7 +56,7 @@ int main() {
 
 		else if(reached_floor_to_stop_in()){
 			event_reached_floor();
-		}*/
+		}
 	}
 	return 0;
 }
