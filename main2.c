@@ -15,7 +15,7 @@
 #include "FSM.h"
 static State state;
 
-
+//hei på deg!!!!!!!!!!!!
 
 int main() {
     
