@@ -46,16 +46,15 @@ int main() {
 
 		
 		if (state == stop_door_open){
-			printf("stop_door_open");
 			event_stop_door_open();
 		}
-		else if (state == drive){
-			event_drive();
+	
 		}
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			elev_set_motor_direction(DIRN_UP);
 			//event_queue_not_empty();
+			//event_drive hit
 		}
 		else if (queue_is_empty()){
 			event_queue_is_empty();
