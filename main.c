@@ -11,7 +11,6 @@
 #include "channels.h"
 #include <stdio.h>
 #include "queue.h"
-#include "queue.c"
 #include "FSM.h"
 #include "handling.h"
 static State state;
@@ -39,7 +38,7 @@ int main() {
         for(int i = 0; i < N_FLOORS; i++){
             for(button_type j = BUTTON_UP; j <= BUTTON_COM; j++){
                 if (elev_get_button_signal(j, i)){
-                    event_button_pushed(j, i);
+                    event_button_pushed(i, j);
                 }
             }
         }
