@@ -10,7 +10,7 @@
 #define FSM_h
 
 #include <stdio.h>
-//#include <unistd.h>
+#include <unistd.h>
 #include "elev.h"
 //#include "queue.h"
 
@@ -37,5 +37,6 @@ void event_queue_is_empty();
 void event_queue_not_empty();
 void event_reached_floor();
 void event_stop_door_open();
+void event_drive();
 
 #endif /* FSM_h */

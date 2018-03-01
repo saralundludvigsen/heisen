@@ -47,6 +47,9 @@ int main() {
 		if (state == stop_door_open){
 			event_stop_door_open();
 		}
+		if (state == drive){
+			event_drive();
+		}
 		else if (!queue_is_empty()){
 			event_queue_not_empty();
 		}
