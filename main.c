@@ -30,18 +30,20 @@ int main() {
         //sjekker hele tiden om og hvilken knapp som er trykket
         //og setter køen vha add_to_queue()
         
-        
+		if (elev_get_button_signal(BUTTON_CALL_UP, 1)) {
+			elev_set_motor_direction(DIRN_UP);
+		}
         if (elev_get_stop_signal()){
             event_emergency_stop_pushed();
         }
         
-        for(int i = 0; i < N_FLOORS; i++){
-            for(enum button_type j = BUTTON_UP; j <= BUTTON_COM; j++){
-                if (elev_get_button_signal(j, i)){
-                    event_button_pushed(i, j);
+        /*for(int i = 0; i < N_FLOORS; i++){
+            for(int j = 0; j < N_BUTTONS; j++){
+                if (elev_get_button_signal(static_cast<elev_button_type_t>(j), i)){
+                    event_button_pushed(i, static_cast<button_type>(j));
                 }
             }
-        }
+        }*/
         
         /*
         if (state == stop_door_open){

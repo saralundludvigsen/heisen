@@ -14,6 +14,7 @@
 #include "elev.h"
 #include "FSM.h"
 
+#define N_BUTTONS 3
 
 //initialiserer køen, dvs. setter alle elementene til 0.
 void initialize_queue();
