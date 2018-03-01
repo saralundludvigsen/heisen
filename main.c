@@ -60,8 +60,8 @@ int main() {
 		/*
 		else if(reached_floor_to_stop_in()){
 			event_reached_floor();
-		}
-	}*/
+		}*/
+	}
 	return 0;
 }
 
