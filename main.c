@@ -22,7 +22,7 @@ int main() {
 		return 1;
 	}
 	// beholder etter initialisering. startbetingelse
-	elev_set_motor_direction(DIRN_UP);
+	elev_set_motor_direction(DIRN_STOP);
 	//------------------------------------------------------------------------------
 	state = stop;
 	while (1) {
@@ -34,7 +34,9 @@ int main() {
 		}
 		
 		for(int i = 0; i < N_FLOORS; i++){
+			printf("for 1");
 			for(int j = 0; j < N_BUTTONS; j++){
+				printf("for 2");
 				elev_button_type_t emma = (elev_button_type_t) j;
 				button_type sara = (button_type) j;
 				if (elev_get_button_signal(emma, i)){
