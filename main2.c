@@ -15,7 +15,7 @@
 #include "FSM.h"
 static State state;
 
-
+//Dette er Sara sin kommentar
 
 int main() {
     
