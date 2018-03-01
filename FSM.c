@@ -19,6 +19,7 @@ void event_emergency_stop_pushed() {
 		elev_set_door_open_lamp(1);
 	}
 	state = stop_door_open;
+	printf("at the end of emergency");
 	//state = emergency_stop;
 }
 
