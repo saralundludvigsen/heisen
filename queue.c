@@ -7,6 +7,7 @@
 //
 
 #include "queue.h"
+#include "FSM.h"
 
 //queue c-file
 
