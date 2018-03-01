@@ -66,7 +66,7 @@ void event_reached_floor() {
 void event_stop_door_open() {
 	//Hold døra åpen i 3 sek
 	elev_set_door_open_lamp(1);
-	sleep(3);
+	//sleep(3);
 	elev_set_door_open_lamp(0);
 	state = stop;
 }
