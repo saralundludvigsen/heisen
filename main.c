@@ -39,7 +39,6 @@ int main() {
 				printf("for 2");
 				elev_button_type_t emma = (elev_button_type_t) j;
 				button_type sara = (button_type) j;
-				printf(j);
 				if (elev_get_button_signal(emma, i)){
 					printf("got signal!");
 					event_button_pushed(i, (sara));
