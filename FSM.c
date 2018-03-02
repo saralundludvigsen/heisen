@@ -14,7 +14,7 @@ static  State state;
 void event_emergency_stop_pushed() {
 
 	elev_set_motor_direction(DIRN_STOP);
-	empty_queue(); 
+	empty_queue();
 	if (elev_get_floor_sensor_signal() >= 0) {
 		elev_set_door_open_lamp(1);
 	}
@@ -22,6 +22,7 @@ void event_emergency_stop_pushed() {
 }
 
 void event_button_pushed(int floor, button_type button) {
+
 	switch (state) {
 
 	case (emergency_stop):
