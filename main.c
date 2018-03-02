@@ -51,8 +51,10 @@ int main() {
 		
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
-			elev_set_motor_direction(DIRN_UP);
+			//elev_set_motor_direction(DIRN_UP);
+
 			//event_queue_not_empty();
+			
 			//event_drive hit
 		}
 		else if (queue_is_empty()){
