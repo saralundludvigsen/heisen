@@ -38,7 +38,6 @@ int main() {
 				elev_button_type_t kjersti = (elev_button_type_t) j;
 				button_type sara = (button_type) j;
 				if (elev_get_button_signal(kjersti, i)){
-					printf("got signal!");
 					event_button_pushed(i, (sara));
 				}
 			}
@@ -49,7 +48,7 @@ int main() {
 			event_stop_door_open();
 		}
 	
-		}
+		
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			elev_set_motor_direction(DIRN_UP);
