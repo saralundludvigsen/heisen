@@ -16,7 +16,7 @@ void event_emergency_stop_pushed() {
 	elev_set_motor_direction(DIRN_STOP);
 	empty_queue();
 	if (elev_get_floor_sensor_signal() >= 0) {
-		elev_set_door_open_lamp(1);
+		event_stop_door_open();
 	}
 	state = emergency_stop;
 }
@@ -40,42 +40,47 @@ void event_queue_is_empty() {
 	state = stop;
 }
 
-void drive(){
+void drive(elev_motor_direction_t current_direction){
 		//vi trenger en funksjon get_direction() 
-		elev_set_motor_direction(get_direction());
+		elev_set_motor_direction(current_direction);
 		state = drive;
 }
 
-void event_queue_not_empty() {
+void stop(){
+	elev_set_motor_direction(DIRN_STOP);
+	state = stop;
+}	
+
+void event_queue_not_empty(elev_motor_direction_t current_direction) {
 	switch (state) {
 	case (emergency_stop):
 		break;
 	case (drive):
 		if (reached_floor_to_stop_in()) {
-			state = stop_door_open;
+			stop();
+			event_stop_door_open();
 		}
 		break;
 	case (stop):
-		drive();
+		drive(current_direction);
 		break;
 	case (stop_door_open):
 		break;
 	}
 }
-
+/*
 void event_reached_floor() {
 	elev_set_motor_direction(DIRN_STOP);
 	state = stop_door_open;
-}
+}*/
 
 void event_stop_door_open() {
 	//Hold døra åpen i 3 sek
 	//dette går ikke
-	elev_set_motor_direction(DIRN_STOP);
 	elev_set_door_open_lamp(1);
 	sleep(3);
 	elev_set_door_open_lamp(0);
-	state = stop;
+	//state = stop;
 }
 
 //------------------------------------------------------------------
