@@ -30,7 +30,7 @@ typedef enum tag_button_type {
 	BUTTON_COM
 }button_type;
 
-
+void initialize_state();
 void event_emergency_stop_pushed();
 void event_button_pushed(int floor, button_type button);
 void event_queue_is_empty();

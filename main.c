@@ -12,7 +12,7 @@
 #include <stdio.h>
 //#include "queue.h"
 #include "handling.h"
-static State state;
+
 
 //i FSM:
 //direction current_dir;
@@ -28,12 +28,13 @@ int main() {
 	}
 	//queue init:
 	initialize_queue();
+	initialize_state();
+
 	// beholder etter initialisering. startbetingelse
 	elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
 	int prev_floor = elev_get_floor_sensor_signal(); //antar at start i etasje
 	//------------------------------------------------------------------------------
-	state = stop;
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()

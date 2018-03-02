@@ -10,6 +10,9 @@
 static int previous_floor;
 static  State state;
 
+void initialize_state() {
+	state = stop;
+}
 
 void event_emergency_stop_pushed() {
 
