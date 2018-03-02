@@ -56,10 +56,10 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 	case (emergency_stop):
 		break;
 	case (drive):
-		if (reached_floor_to_stop_in()) {
+		/*if (reached_floor_to_stop_in()) {
 			stop();
 			event_stop_door_open();
-		}
+		}*/
 		break;
 	case (stop):
 		drive(current_direction);
@@ -68,11 +68,20 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 		break;
 	}
 }
-/*
+
 void event_reached_floor() {
-	elev_set_motor_direction(DIRN_STOP);
-	state = stop_door_open;
-}*/
+	switch(state){
+		case(emergency_stop):
+			break;
+		case(drive):
+		case(stop):
+			stop();
+			event_stop_door_open();
+			//slett bestilling: --> da vil den kjøre videre
+			remove_from_queue(elev_get_floor_sensor_signal());
+			break;
+	}
+}
 
 void event_stop_door_open() {
 	//Hold døra åpen i 3 sek

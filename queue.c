@@ -28,6 +28,7 @@ void add_to_queue(button_type button, int floor) {
 
 void remove_from_queue(int floor) {
 	//forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
+	//Antar at en person vil uansett gå inn i heisen om retningen den er på vei i er riktig eller ikke
 	for (int i = 0; i < N_BUTTONS; i++) {
 		queue[floor][i] = 0;
 	}
