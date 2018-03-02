@@ -26,6 +26,8 @@ int main() {
 		printf("Unable to initialize elevator hardware!\n");
 		return 1;
 	}
+	//queue init:
+	initialize_queue();
 	// beholder etter initialisering. startbetingelse
 	elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
