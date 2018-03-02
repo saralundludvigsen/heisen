@@ -34,9 +34,10 @@ typedef enum tag_button_type {
 void event_emergency_stop_pushed();
 void event_button_pushed(int floor, button_type button);
 void event_queue_is_empty();
-void event_queue_not_empty(elev_motor_direction_t current direction);
+void event_queue_not_empty(elev_motor_direction_t current_direction);
 void event_reached_floor();
 void event_stop_door_open();
-void drive();
+void z_drive(elev_motor_direction_t current_direction);
+void z_stop();
 
 #endif /* FSM_h */

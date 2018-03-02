@@ -28,7 +28,6 @@ void event_button_pushed(int floor, button_type button) {
 	case (emergency_stop):
 		break;
 	case(stop):
-	case(stop_door_open):
 	case(drive):
 		add_to_queue(floor, button);
 		break;
@@ -40,13 +39,13 @@ void event_queue_is_empty() {
 	state = stop;
 }
 
-void drive(elev_motor_direction_t current_direction){
+void z_drive(elev_motor_direction_t current_direction){
 		//vi trenger en funksjon get_direction() 
 		elev_set_motor_direction(current_direction);
 		state = drive;
 }
 
-void stop(){
+void z_stop(){
 	elev_set_motor_direction(DIRN_STOP);
 	state = stop;
 }	
@@ -57,14 +56,12 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 		break;
 	case (drive):
 		/*if (reached_floor_to_stop_in()) {
-			stop();
+			z_stop();
 			event_stop_door_open();
 		}*/
 		break;
 	case (stop):
-		drive(current_direction);
-		break;
-	case (stop_door_open):
+		z_drive(current_direction);
 		break;
 	}
 }
@@ -75,7 +72,7 @@ void event_reached_floor() {
 			break;
 		case(drive):
 		case(stop):
-			stop();
+			z_stop();
 			event_stop_door_open();
 			//slett bestilling: --> da vil den kjøre videre
 			remove_from_queue(elev_get_floor_sensor_signal());
