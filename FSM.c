@@ -40,9 +40,10 @@ void event_queue_is_empty() {
 	state = stop;
 }
 
-void event_drive(){
+void drive(){
 		//vi trenger en funksjon get_direction() 
 		elev_set_motor_direction(get_direction());
+		state = drive;
 }
 
 void event_queue_not_empty() {
@@ -55,7 +56,7 @@ void event_queue_not_empty() {
 		}
 		break;
 	case (stop):
-		state = drive;
+		drive();
 		break;
 	case (stop_door_open):
 		break;
@@ -70,6 +71,7 @@ void event_reached_floor() {
 void event_stop_door_open() {
 	//Hold døra åpen i 3 sek
 	//dette går ikke
+	elev_set_motor_direction(DIRN_STOP);
 	elev_set_door_open_lamp(1);
 	sleep(3);
 	elev_set_door_open_lamp(0);

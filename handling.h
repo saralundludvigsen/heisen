@@ -17,6 +17,7 @@
 #include "queue.h"
 
 
+
 //returnerer opp (1) eller ned (0) avhengig av om etg er over eller under den heisen er i
 elev_motor_direction_t get_direction(int floor_in, int floor_to);
 
