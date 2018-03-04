@@ -9,7 +9,7 @@
 
 //queue c-file
 
-
+/*
 //kø-matrise
 static int queue[N_FLOORS][N_BUTTONS];
 
@@ -60,4 +60,4 @@ bool is_order(button_type button, int floor) {
 	return queue[floor][button];
 }
 
-
+*/

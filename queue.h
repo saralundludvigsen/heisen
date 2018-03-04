@@ -15,7 +15,7 @@
 #include "elev.h"
 #define N_BUTTONS 3
 
-
+/*
 //initialiserer køen, dvs. setter alle elementene til 0.
 void initialize_queue();
 
@@ -35,6 +35,6 @@ void empty_queue();
 
 //sjekker knappen _i køen_, om den er bestilt dit
 bool is_order(button_type button, int floor);
-
+*/
 
 #endif /* queue_h */
