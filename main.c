@@ -37,7 +37,7 @@ int main() {
     
     //elev_set_motor_direction(DIRN_UP);
 	while (1) {
-        
+        state = stop;
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
 		if (elev_get_stop_signal() == 1) {
