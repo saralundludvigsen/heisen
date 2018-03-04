@@ -34,7 +34,9 @@ int main() {
 	int prev_floor = elev_get_floor_sensor_signal(); //antar at start i etasje
 	//------------------------------------------------------------------------------
 	state = stop;
+    printf("før while");
 	while (1) {
+        
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
 		if (elev_get_stop_signal() == 1) {
