@@ -56,7 +56,7 @@ int elev_init(void) {
 		if (i != N_FLOORS - 1)
 			elev_set_button_lamp(BUTTON_CALL_UP, i, 0);
 
-		elev_set_button_lamp(BUTTON_COMMAND, i, 1);
+		elev_set_button_lamp(BUTTON_COMMAND, i, 0);
 	}
 
 	// Clear stop lamp, door open lamp, and set floor indicator to ground floor.
