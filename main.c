@@ -45,7 +45,6 @@ int main() {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
 		//
-        elev_set_motor_direction(DIRN_UP);
 		current_direction = get_direction(prev_floor, current_direction);
 
 		//skal kun sjekke knappetrykk og legge til i køen
