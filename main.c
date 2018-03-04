@@ -41,7 +41,6 @@ int main() {
     empty_queue();
     
 	while (1) {
-        printf("shaalalalala");
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
 		if (elev_get_stop_signal() == 1) {
