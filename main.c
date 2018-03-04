@@ -74,7 +74,7 @@ int main() {
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
 		}
-/*
+
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			//elev_set_motor_direction(DIRN_UP);
@@ -89,7 +89,7 @@ int main() {
 		else if (queue_is_empty()){
 			event_queue_is_empty();
 		}
-		*/
+		
 	}
 	return 0;
 }
