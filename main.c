@@ -42,6 +42,7 @@ int main() {
 		//og setter køen vha add_to_queue()
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
+            printf("stoppppppp");
 		}
 		//oppdaterer prev_floor:
 		if (elev_get_floor_sensor_signal() != -1) {
@@ -60,7 +61,6 @@ int main() {
 				elev_button_type_t knapp = (elev_button_type_t) j;
 				button_type button = (button_type) j;
 				if (elev_get_button_signal(knapp, i)){
-                    printf("lalal");
 					event_button_pushed(i, button);
 				}
 			}
