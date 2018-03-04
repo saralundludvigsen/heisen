@@ -36,7 +36,9 @@ int main() {
 	//------------------------------------------------------------------------------
 	state = stop;
     printf("NÅ?");
+    empty_queue();
     print_queue();
+    empty_queue();
 
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
