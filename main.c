@@ -35,7 +35,7 @@ int main() {
 	//------------------------------------------------------------------------------
 	state = stop;
     
-    elev_set_motor_direction(DIRN_UP);
+    //elev_set_motor_direction(DIRN_UP);
 	while (1) {
         
 		//sjekker hele tiden om og hvilken knapp som er trykket
