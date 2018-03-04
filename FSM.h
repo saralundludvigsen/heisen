@@ -18,7 +18,6 @@
 typedef enum states {
 	emergency_stop,
 	drive,
-	stop_door_open,
 	stop
 } State;
 
