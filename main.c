@@ -57,7 +57,7 @@ int main() {
         else if(current_direction==DIRN_DOWN){
             printf(" DOWN ");
         }
-        else if(current_direction==DIRN_UP){
+        else if(current_direction==DIRN_STOP){
             printf(" STOP ");
         }
         
