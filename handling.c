@@ -20,20 +20,20 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		return false;
 	}
 	//BUTTON_COMMAND
-	//if (is_order(BUTTON_COM, current_floor)) {
-	//	return true;
-	//}
-	////BUTTON_UP og BUTTON_DOWN:
-	////her bryr vi oss om retning til heisen.
-	//if (is_order(BUTTON_DOWN, current_floor) && current_direction == DIRN_DOWN) {
-	//	return true;
-	//}
-	//if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
-	//	return true;
-	//}
-	//else {
-	//	return false;
-	//}
+	if (is_order(BUTTON_COM, current_floor)) {
+		return true;
+	}
+	//BUTTON_UP og BUTTON_DOWN:
+	//her bryr vi oss om retning til heisen.
+	if (is_order(BUTTON_DOWN, current_floor) && current_direction == DIRN_DOWN) {
+		return true;
+	}
+	if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
+		return true;
+	}
+	else {
+		return false;
+	}
 
 }
 
@@ -49,7 +49,7 @@ elev_motor_direction_t get_direction(int floor_in, int floor_to) {
 	}
 }
 
-elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr_dir) {
+//elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr_dir) {
 	//if (curr_dir == DIRN_UP) {
 	//	for (int i = prev_floor; i < N_FLOORS; i++) {
 	//		//har bestilling til etasje over den den er i og er på vei opp
@@ -93,5 +93,5 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 	//	}
 	//}
 	//ta seg av andre merkelige tilfeller
-	return DIRN_STOP;
-}
+	//return DIRN_STOP;
+//}
