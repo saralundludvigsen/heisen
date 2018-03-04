@@ -44,7 +44,11 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		//
+        
+        elev_set_motor_direction(DIRN_UP);
+        printf(prev_floor);
+		/*
+        //
 		current_direction = get_direction(prev_floor, current_direction);
 
 		//skal kun sjekke knappetrykk og legge til i køen
@@ -76,7 +80,7 @@ int main() {
 		else if (queue_is_empty()){
 			event_queue_is_empty();
 		}
-		
+		*/
 	}
 	return 0;
 }
