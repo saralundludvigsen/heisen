@@ -48,7 +48,8 @@ int main() {
 		}
         
         elev_set_motor_direction(DIRN_UP);
-        printf(prev_floor);
+        string prev = (string) prev_floor;
+        printf(prev);
 		/*
         //
 		current_direction = get_direction(prev_floor, current_direction);
