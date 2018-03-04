@@ -64,6 +64,8 @@ int main() {
 				}
 			}
 		}
+        
+        print_queue();
 	
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();

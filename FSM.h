@@ -63,5 +63,7 @@ void empty_queue();
 //sjekker knappen _i køen_, om den er bestilt dit
 bool is_order(button_type button, int floor);
 
+void print_queue();
+
 
 #endif /* FSM_h */
