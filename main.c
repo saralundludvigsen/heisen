@@ -35,10 +35,6 @@ int main() {
 	int prev_floor = 0; //antar at start i 1. etasje
 	//------------------------------------------------------------------------------
 	state = stop;
-    printf("NÅ?");
-    empty_queue();
-    print_queue();
-    empty_queue();
     
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
@@ -55,6 +51,15 @@ int main() {
 		
         //
 		current_direction = get_direction(prev_floor, current_direction);
+        if(current_direction==DIRN_UP){
+            printf(" UP ");
+        }
+        else if(current_direction==DIRN_DOWN){
+            printf(" DOWN ");
+        }
+        else if(current_direction==DIRN_UP){
+            printf(" STOP ");
+        }
         
         
 		//skal kun sjekke knappetrykk og legge til i køen
@@ -68,7 +73,7 @@ int main() {
 			}
 		}
         
-        print_queue();
+        //print_queue();
 	
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
