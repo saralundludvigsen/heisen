@@ -36,7 +36,8 @@ int main() {
 	//------------------------------------------------------------------------------
 	state = stop;
     printf("NÅ?");
-    empty_queue();
+    print_queue();
+
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()

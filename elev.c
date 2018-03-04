@@ -42,7 +42,6 @@ static const int button_channel_matrix[N_FLOORS][N_BUTTONS] = {
 
 int elev_init(void) {
 	int i;
-    printf("inni init!!!!");
 
 	// Init hardware
 	if (!io_init())

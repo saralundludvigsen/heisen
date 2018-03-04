@@ -145,9 +145,11 @@ bool is_order(button_type button, int floor) {
 }
 
 void print_queue(){
+    int yes=0;
     for (int i = 0;i<4;i++){
         for(int j=0;j<3;j++){
             if(queue[i][j]){
+                yes =1;
                 if(i==0){
                     printf("1");
                 }
@@ -162,6 +164,9 @@ void print_queue(){
                 }
             }
         }
+    }
+    if(!yes){
+        printf("Tom kø");
     }
 }
 
