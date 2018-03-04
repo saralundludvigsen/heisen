@@ -34,7 +34,8 @@ int main() {
 	int prev_floor = elev_get_floor_sensor_signal(); //antar at start i etasje
 	//------------------------------------------------------------------------------
 	state = stop;
-    printf("før while");
+    
+    elev_set_motor_direction(DIRN_UP);
 	while (1) {
         
 		//sjekker hele tiden om og hvilken knapp som er trykket
@@ -47,25 +48,12 @@ int main() {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
         
-        elev_set_motor_direction(DIRN_UP);
-        
-        
-        if(prev_floor==0){
-            printf("1");
-        }
-        else if(prev_floor==1){
-            printf("2");
-        }
-        else if(prev_floor==2){
-            printf("3");
-        }
-        else if(prev_floor==3){
-            printf("4");
-        }
-		/*
+    
+		
         //
 		current_direction = get_direction(prev_floor, current_direction);
-
+        add_to_queue(BUTTON_DOWN, 2);
+        
 		//skal kun sjekke knappetrykk og legge til i køen
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
@@ -80,7 +68,7 @@ int main() {
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
 		}
-
+/*
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			//elev_set_motor_direction(DIRN_UP);
