@@ -18,7 +18,8 @@ void event_emergency_stop_pushed() {
 	if (elev_get_floor_sensor_signal() >= 0) {
 		event_stop_door_open();
 	}
-	state = emergency_stop;
+	//state = emergency_stop;
+    state = stop;
 }
 
 void event_button_pushed(int floor, button_type button) {
