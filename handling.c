@@ -92,6 +92,6 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 			}
 		}
 	}
-	ta seg av andre merkelige tilfeller
+	//ta seg av andre merkelige tilfeller
 	return DIRN_STOP;
 }
