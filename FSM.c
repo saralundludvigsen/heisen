@@ -22,7 +22,7 @@ void event_emergency_stop_pushed() {
 }
 
 void event_button_pushed(int floor, button_type button) {
-
+    printf("da var vi i event_pushec");
 	switch (state) {
 
 	case (emergency_stop):
