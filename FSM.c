@@ -15,6 +15,7 @@ void event_emergency_stop_pushed() {
 
 	elev_set_motor_direction(DIRN_STOP);
 	empty_queue();
+    sleep(3);
 	if (elev_get_floor_sensor_signal() >= 0) {
 		event_stop_door_open();
 	}
