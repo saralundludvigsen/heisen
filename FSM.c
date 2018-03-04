@@ -28,6 +28,7 @@ void event_button_pushed(int floor, button_type button) {
 	case (emergency_stop):
 		break;
 	case(stop):
+            printf("vier i state stopp");
 	case(drive):
 		add_to_queue(floor, button);
         printf("lagt til");
