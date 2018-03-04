@@ -30,6 +30,7 @@ void event_button_pushed(int floor, button_type button) {
 	case(stop):
 	case(drive):
 		add_to_queue(floor, button);
+        printf("lagt til");
 		break;
 	}
 }
@@ -142,5 +143,24 @@ bool is_order(button_type button, int floor) {
     return queue[floor][button];
 }
 
-
+void print_queue(){
+    for (int i = 0;i<4;i++){
+        for(int j=0;j<3;j++){
+            if(queue[i][j]){
+                if(i==0){
+                    printf("1");
+                }
+                else if(i==1){
+                    printf("2");
+                }
+                else if(i==2){
+                    printf("3");
+                }
+                else if(i==3){
+                    printf("4");
+                }
+            }
+        }
+    }
+}
 
