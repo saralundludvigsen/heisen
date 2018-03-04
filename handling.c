@@ -89,9 +89,12 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 				else if (prev_floor > i) {
 					return DIRN_DOWN;
 				}
+                else{
+                    return DIRN_STOP;
+                }
 			}
 		}
 	}
 	//ta seg av andre merkelige tilfeller
-	return DIRN_STOP;
+	//return DIRN_STOP;
 }
