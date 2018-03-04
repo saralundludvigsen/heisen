@@ -79,7 +79,9 @@ int main() {
 			//elev_set_motor_direction(DIRN_UP);
 
 			//event_queue_not_empty();
-			event_queue_not_empty(current_direction);
+			//event_queue_not_empty(current_direction);
+            event_queue_not_empty(DIRN_UP);
+
 			//test: elev_set_motor_direction(DIRN_UP);
 
 			//event_queue_not_empty(direction);
