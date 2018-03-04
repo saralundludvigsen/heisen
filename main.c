@@ -60,6 +60,7 @@ int main() {
 				elev_button_type_t knapp = (elev_button_type_t) j;
 				button_type button = (button_type) j;
 				if (elev_get_button_signal(knapp, i)){
+                    printf("lalal");
 					event_button_pushed(i, button);
 				}
 			}
