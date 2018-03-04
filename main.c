@@ -42,7 +42,6 @@ int main() {
 		//og setter køen vha add_to_queue()
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
-            printf("stoppppppp");
 		}
 		//oppdaterer prev_floor:
 		if (elev_get_floor_sensor_signal() != -1) {

@@ -48,7 +48,7 @@ void initialize_queue();
 
 //if button is pushed, call this function
 //NB 0-indeksert floor
-void add_to_queue(button_type button, int floor);
+void add_to_queue(int floor, button_type button);
 
 //Fjerner en etasje fra køen.
 //Dvs. setter alle 3 knapper i kø til 0

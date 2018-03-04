@@ -86,7 +86,7 @@ void event_stop_door_open() {
 	//Hold døra åpen i 3 sek
 	//dette går ikke
 	elev_set_door_open_lamp(1);
-	//sleep(3);
+	sleep(3);
 	elev_set_door_open_lamp(0);
 	//state = stop;
 }
@@ -105,7 +105,7 @@ void initialize_queue() {
     }
 }
 
-void add_to_queue(button_type button, int floor) {
+void add_to_queue(int floor, button_type button) {
     //forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
     queue[floor][button] = 1;
 }
