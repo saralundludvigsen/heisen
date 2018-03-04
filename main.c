@@ -27,7 +27,7 @@ int main() {
 		return 1;
 	}
 	//queue init:
-    printf("NÅ?");
+    
 	initialize_queue();
 	// beholder etter initialisering. startbetingelse
 	elev_set_motor_direction(DIRN_STOP);
@@ -35,7 +35,8 @@ int main() {
 	int prev_floor = elev_get_floor_sensor_signal(); //antar at start i etasje
 	//------------------------------------------------------------------------------
 	state = stop;
-    
+    printf("NÅ?");
+    empty_queue();
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
