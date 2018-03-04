@@ -52,7 +52,7 @@ int main() {
 		
         //
 		current_direction = get_direction(prev_floor, current_direction);
-        add_to_queue(BUTTON_DOWN, 2);
+        
         
 		//skal kun sjekke knappetrykk og legge til i køen
 		for(int i = 0; i < N_FLOORS; i++){
