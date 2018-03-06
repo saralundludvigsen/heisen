@@ -36,7 +36,6 @@ int main() {
 	elev_motor_direction_t current_direction = DIRN_STOP;
 	int prev_floor = 0; //antar at start i 1. etasje
 	//------------------------------------------------------------------------------
-	state = stop;
     
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
