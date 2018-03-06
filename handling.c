@@ -40,7 +40,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	}
 
 	//dersom den kjører OPP og denne bestillingen er den ØVERSTE (og ned, de andre tar seg av resten): return true
-	else if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
+	/*else if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
 		bool isOrderAbove = false;
 		for (int i = current_floor + 1; i < N_FLOORS; i++) {
 			for (button_type button = BUTTON_DOWN; button <= BUTTON_COM; button++) {
@@ -57,8 +57,8 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 				return true;
 			}
 		}
-		//if (current_direction == DIRN_DOWN){}
-	}
+	}*/
+	//if (current_direction == DIRN_DOWN){}
 	else {
 		return false;
 	}
