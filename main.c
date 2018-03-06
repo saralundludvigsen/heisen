@@ -85,7 +85,8 @@ int main() {
 			//elev_set_motor_direction(DIRN_UP);
 
 			//event_queue_not_empty();
-            current_direction=DIRN_UP;
+            //test: current_direction=DIRN_UP; //FUNKER
+			current_direction = get_direction(prev_floor, current_direction);
             event_queue_not_empty(current_direction);
 
 			//test: elev_set_motor_direction(DIRN_UP);
