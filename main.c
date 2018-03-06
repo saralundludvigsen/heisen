@@ -47,7 +47,7 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-    
+		current_direction = get_direction(prev_floor, current_direction);
 		//current_direction = get_direction(prev_floor, current_direction);
  
         
