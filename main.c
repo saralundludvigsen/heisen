@@ -47,8 +47,8 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		if (prev_floor == 3) {
-			printf("4 EEEEEEETTTTTTTTAAAAAAAAAAASSSSSSSSJJJJJJJJJEEEEEEEEEEE");
+		if (elev_get_floor_sensor_signal()==3) {
+			printf("4 ETASJEEEEEEEEEEE");
 		}
     
 		
@@ -76,11 +76,10 @@ int main() {
 
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
-			//elev_set_motor_direction(DIRN_UP);
-
 			//event_queue_not_empty();
             //test: current_direction=DIRN_UP; //FUNKER
-			current_direction = get_direction(prev_floor, current_direction);
+			current_direction = get_direction(prev_floor, current_direction); //funker ish
+			//får UP STOP UP STOP av en eller annen grunn
             event_queue_not_empty(current_direction);
 
 			if (current_direction == DIRN_UP) {

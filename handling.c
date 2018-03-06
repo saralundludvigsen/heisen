@@ -31,6 +31,10 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
 		return true;
 	}
+	//4 etasje:
+	if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
+		return true;
+	}
 	else {
 		return false;
 	}
