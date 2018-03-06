@@ -51,16 +51,8 @@ int main() {
     
 		
         //
-		current_direction = get_direction(prev_floor, current_direction);
-        if(current_direction==DIRN_UP){
-            printf(" UP ");
-        }
-        else if(current_direction==DIRN_DOWN){
-            printf(" DOWN ");
-        }
-        else if(current_direction==DIRN_STOP){
-            printf(" STOP ");
-        }
+		//current_direction = get_direction(prev_floor, current_direction);
+ 
         
         
 		//skal kun sjekke knappetrykk og legge til i køen
@@ -88,6 +80,15 @@ int main() {
             //test: current_direction=DIRN_UP; //FUNKER
 			current_direction = get_direction(prev_floor, current_direction);
             event_queue_not_empty(current_direction);
+			if (current_direction == DIRN_UP) {
+				printf(" UP ");
+			}
+			else if (current_direction == DIRN_DOWN) {
+				printf(" DOWN ");
+			}
+			else if (current_direction == DIRN_STOP) {
+				printf(" STOP ");
+			}
 
 			//test: elev_set_motor_direction(DIRN_UP);
 
