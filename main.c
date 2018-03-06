@@ -47,7 +47,9 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-        
+		if (prev_floor == 3) {
+			printf("4 EEEEEEETTTTTTTTAAAAAAAAAAASSSSSSSSJJJJJJJJJEEEEEEEEEEE");
+		}
     
 		
         //
