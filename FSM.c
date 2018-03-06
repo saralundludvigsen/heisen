@@ -7,7 +7,9 @@
 //
 
 #include "FSM.h"
+#include "timer.h"
 static int previous_floor;
+static clock_t start;
 static  State state;
 
 void initialize_state() {
@@ -20,7 +22,11 @@ void event_emergency_stop_pushed() {
 	empty_queue();
 	if (elev_get_floor_sensor_signal() >= 0) {
 		event_stop_door_open();
+        start = start_timer();
+        state = stop_door_open;
+
 	}
+    
 	//state = emergency_stop;
     state = stop;
 }
@@ -30,18 +36,27 @@ void event_button_pushed(int floor, button_type button) {
 
 	case (emergency_stop):
 		break;
+    case (stop_door_open):
 	case(stop):
-            //printf("vier i state stopp");
 	case(drive):
 		add_to_queue(floor, button);
-        //printf("lagt til");
 		break;
 	}
 }
 
 void event_queue_is_empty() {
-	elev_set_motor_direction(DIRN_STOP);
-	state = stop;
+    switch (state) {
+        
+    case (emergency_stop):
+        break;
+    case (stop_door_open):
+        if (current_time() - start >= 3){
+            elev_set_door_open_lamp(0);
+        }
+        break;
+    case (drive):
+    case (stop):
+        break;
 }
 
 void z_drive(elev_motor_direction_t current_direction){
@@ -52,13 +67,18 @@ void z_drive(elev_motor_direction_t current_direction){
 
 void z_stop(){
 	elev_set_motor_direction(DIRN_STOP);
-	state = stop;
-}	
+}
 
 void event_queue_not_empty(elev_motor_direction_t current_direction) {
 	switch (state) {
 	case (emergency_stop):
 		break;
+    case (stop_door_open):
+        if (current_time() - start >= 3){
+            elev_set_door_open_lamp(0);
+            
+        }
+        break;
 	case (drive):
 		/*if (reached_floor_to_stop_in()) {
 			z_stop();
@@ -75,12 +95,16 @@ void event_reached_floor() {
 	switch(state){
 		case(emergency_stop):
 			break;
+        case(stop_door_open):
+            event_stop_door_open();
+            remove_from_queue(elev_get_floor_sensor_signal());
 		case(drive):
 		case(stop):
 			z_stop();
-			event_stop_door_open();
+            state = stop_door_open;
+			//event_stop_door_open();
 			//slett bestilling: --> da vil den kjøre videre
-			remove_from_queue(elev_get_floor_sensor_signal());
+			
 			break;
 	}
 }
@@ -88,10 +112,9 @@ void event_reached_floor() {
 void event_stop_door_open() {
 	//Hold døra åpen i 3 sek
 	//dette går ikke
-	elev_set_door_open_lamp(1);
-	sleep(3);
-	elev_set_door_open_lamp(0);
-	//state = stop;
+    start = start_timer();
+    elev_set_door_open_lamp(1);
+    }
 }
 
 //------------------------------------------------------------------

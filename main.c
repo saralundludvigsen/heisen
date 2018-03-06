@@ -12,6 +12,7 @@
 #include <stdio.h>
 //#include "queue.h"
 #include "handling.h"
+#include "timer.h"
 
 
 //i FSM:
@@ -35,7 +36,8 @@ int main() {
 	elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
 	int prev_floor = 0; //antar at start i 1. etasje
-	//------------------------------------------------------------------------------
+	//----------------------------------------------------------------------------
+    
     
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
