@@ -67,24 +67,24 @@ int main() {
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
 		}
-
+		if (current_direction == DIRN_UP) {
+			printf(" UP ");
+		}
+		else if (current_direction == DIRN_DOWN) {
+			printf(" DOWN ");
+		}
+		else if (current_direction == DIRN_STOP) {
+			printf(" STOP ");
+		}
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			//event_queue_not_empty();
             //test: current_direction=DIRN_UP; //FUNKER
 			current_direction = get_direction(prev_floor, current_direction); //funker ish
-			//får UP STOP UP STOP av en eller annen grunn
+			//får UP STOP UP STOP når man vil opp fra første etg
             event_queue_not_empty(current_direction);
 
-			if (current_direction == DIRN_UP) {
-				printf(" UP ");
-			}
-			else if (current_direction == DIRN_DOWN) {
-				printf(" DOWN ");
-			}
-			else if (current_direction == DIRN_STOP) {
-				printf(" STOP ");
-			}
+			
 
 			//test: elev_set_motor_direction(DIRN_UP);
 
