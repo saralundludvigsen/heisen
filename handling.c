@@ -54,7 +54,25 @@ elev_motor_direction_t get_direction(int floor_in, int floor_to) {
 }*/
 
 elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr_dir) {
-	if (curr_dir == DIRN_UP) {
+	//test - uten retning:
+	for (int i = prev_floor; i < N_FLOORS; i++) {
+		//har bestilling til etasje over den den er i
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i)|| is_order(BUTTON_DOWN,i)) {
+			return DIRN_UP;
+		}
+	}
+	//else:
+	for (int i = 0; i < prev_floor; i++) {
+		//har bestilling til etasje under den den er i
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+			return DIRN_DOWN;
+		}
+	}
+	return DIRN_STOP;
+
+
+
+	/*if (curr_dir == DIRN_UP) {
 		for (int i = prev_floor; i < N_FLOORS; i++) {
 			//har bestilling til etasje over den den er i og er på vei opp
 			if ((is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i))) {
@@ -100,5 +118,5 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 		}
 	}
 	//ta seg av andre merkelige tilfeller
-	//return DIRN_STOP;
+	//return DIRN_STOP;*/
 }
