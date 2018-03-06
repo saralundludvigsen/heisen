@@ -19,13 +19,15 @@
 
 
 //returnerer opp (1) eller ned (0) avhengig av om etg er over eller under den heisen er i
-elev_motor_direction_t get_direction(int floor_in, int floor_to);
+//elev_motor_direction_t get_direction(int floor_in, int floor_to);
 //elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr_dir);
 
+elev_motor_direction_t get_direction(int prev_floor,elev_motor_direction_t curr_dir);
 
 //sjekker om heisen skal stoppe i current etasje
 //dvs. om floor ligger i køen, i riktig retning
 bool reached_floor_to_stop_in(elev_motor_direction_t current_direction);
+
 
 
 

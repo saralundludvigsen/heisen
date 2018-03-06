@@ -27,14 +27,17 @@ int main() {
 		return 1;
 	}
 	//queue init:
+    
 	initialize_queue();
 	initialize_state();
 
 	// beholder etter initialisering. startbetingelse
 	elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
-	int prev_floor = elev_get_floor_sensor_signal(); //antar at start i etasje
+	int prev_floor = 0; //antar at start i 1. etasje
 	//------------------------------------------------------------------------------
+	state = stop;
+    
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
@@ -45,9 +48,22 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		//
+        
+    
+		
+        //
 		current_direction = get_direction(prev_floor, current_direction);
-
+        if(current_direction==DIRN_UP){
+            printf(" UP ");
+        }
+        else if(current_direction==DIRN_DOWN){
+            printf(" DOWN ");
+        }
+        else if(current_direction==DIRN_STOP){
+            printf(" STOP ");
+        }
+        
+        
 		//skal kun sjekke knappetrykk og legge til i køen
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
@@ -58,6 +74,8 @@ int main() {
 				}
 			}
 		}
+        
+        //print_queue();
 	
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
@@ -68,7 +86,9 @@ int main() {
 			//elev_set_motor_direction(DIRN_UP);
 
 			//event_queue_not_empty();
-			event_queue_not_empty(current_direction);
+            //current_direction=DIRN_UP;
+            event_queue_not_empty(current_direction);
+
 			//test: elev_set_motor_direction(DIRN_UP);
 
 			//event_queue_not_empty(direction);

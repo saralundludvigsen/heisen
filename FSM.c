@@ -21,18 +21,20 @@ void event_emergency_stop_pushed() {
 	if (elev_get_floor_sensor_signal() >= 0) {
 		event_stop_door_open();
 	}
-	state = emergency_stop;
+	//state = emergency_stop;
+    state = stop;
 }
 
 void event_button_pushed(int floor, button_type button) {
-
 	switch (state) {
 
 	case (emergency_stop):
 		break;
 	case(stop):
+            //printf("vier i state stopp");
 	case(drive):
 		add_to_queue(floor, button);
+        //printf("lagt til");
 		break;
 	}
 }
@@ -93,3 +95,81 @@ void event_stop_door_open() {
 }
 
 //------------------------------------------------------------------
+//QUEUE
+
+//kø-matrise
+static int queue[N_FLOORS][N_BUTTONS];
+
+void initialize_queue() {
+    for (int i = 0; i < N_FLOORS; i++) {
+        for (int j = 0; j < N_BUTTONS; j++) {
+            queue[i][j] = 0;
+        }
+    }
+}
+
+void add_to_queue(int floor, button_type button) {
+    //forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
+    queue[floor][button] = 1;
+}
+
+void remove_from_queue(int floor) {
+    //forutsetter at paramterne er "lovlige": ikke kaller down på etg 1 f eks
+    //Antar at en person vil uansett gå inn i heisen om retningen den er på vei i er riktig eller ikke
+    for (int i = 0; i < N_BUTTONS; i++) {
+        queue[floor][i] = 0;
+    }
+}
+
+
+bool queue_is_empty() {
+    for (int i = 0; i < N_FLOORS; i++) {
+        for (int j = 0; j < N_BUTTONS; j++) {
+            if (queue[i][j]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+void empty_queue() {
+    for (int i = 0; i < N_FLOORS; i++) {
+        for (int j = 0; j < N_BUTTONS; j++) {
+            if (queue[i][j]) {
+                queue[i][j] = 0;
+            }
+        }
+    }
+}
+
+bool is_order(button_type button, int floor) {
+    return queue[floor][button];
+}
+
+void print_queue(){
+    int yes=0;
+    for (int i = 0;i<4;i++){
+        for(int j=0;j<3;j++){
+            if(queue[i][j]){
+                yes =1;
+                if(i==0){
+                    printf("1");
+                }
+                else if(i==1){
+                    printf("2");
+                }
+                else if(i==2){
+                    printf("3");
+                }
+                else if(i==3){
+                    printf("4");
+                }
+            }
+        }
+    }
+    if(!yes){
+        printf("Tom kø");
+    }
+}
+
