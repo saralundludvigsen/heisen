@@ -68,16 +68,6 @@ int main() {
 			event_reached_floor();
 		}
 
-		if (current_direction == DIRN_UP) {
-			printf(" UP ");
-		}
-		else if (current_direction == DIRN_DOWN) {
-			printf(" DOWN ");
-		}
-		else if (current_direction == DIRN_STOP) {
-			printf(" STOP ");
-		}
-
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			//event_queue_not_empty();
@@ -95,6 +85,15 @@ int main() {
 		}
 		else if (queue_is_empty()){
 			event_queue_is_empty();
+		}
+		if (current_direction == DIRN_UP) {
+			printf(" UP ");
+		}
+		if (current_direction == DIRN_DOWN) {
+			printf(" DOWN ");
+		}
+		if (current_direction == DIRN_STOP) {
+			printf(" STOP ");
 		}
 		
 	}
