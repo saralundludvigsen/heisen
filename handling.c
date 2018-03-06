@@ -34,26 +34,26 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
 		return true;
 	}
-	
+
 	//dersom den kjører OPP og denne bestillingen er den ØVERSTE (og ned, de andre tar seg av resten): return true
-	if ((current_direction == DIRN_UP) && (current_floor<3) && is_order(BUTTON_DOWN, current_floor)) {
+	if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
 		bool isOrderAbove = false;
 		for (int i = current_floor + 1; i < N_FLOORS; i++) {
 			for (button_type button = BUTTON_DOWN; button <= BUTTON_COM; button++) {
 				if (is_order(button, i)) {
 					isOrderAbove = true;
-				
+
+				}
+			}
+			if (isOrderAbove) {
+				return false;
+			}
+			else if (!isOrderAbove) {
+				return true;
 			}
 		}
-		if (isOrderAbove) {
-			return false;
-		}
-		else if (!isOrderAbove) {
-			return true;
-		}
+		//if (current_direction == DIRN_DOWN){}
 	}
-	//if (current_direction == DIRN_DOWN){}
-	
 	else {
 		return false;
 	}
@@ -76,7 +76,7 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 	//test - uten retning:
 	for (int i = prev_floor; i < N_FLOORS; i++) {
 		//har bestilling til etasje over den den er i
-		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i)|| is_order(BUTTON_DOWN,i)) {
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
 			return DIRN_UP;
 		}
 	}
@@ -130,9 +130,9 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 				else if (prev_floor > i) {
 					return DIRN_DOWN;
 				}
-                else{
-                    return DIRN_STOP;
-                }
+				else{
+					return DIRN_STOP;
+				}
 			}
 		}
 	}
