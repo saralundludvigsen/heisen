@@ -63,7 +63,15 @@ int main() {
 		}
         
         //print_queue();
-	
+		if (current_direction == DIRN_UP) {
+			printf(" UP ");
+		}
+		if (current_direction == DIRN_DOWN) {
+			printf(" DOWN ");
+		}
+		if (current_direction == DIRN_STOP) {
+			printf(" STOP ");
+		}
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
 		}
@@ -86,15 +94,7 @@ int main() {
 		else if (queue_is_empty()){
 			event_queue_is_empty();
 		}
-		if (current_direction == DIRN_UP) {
-			printf(" UP ");
-		}
-		if (current_direction == DIRN_DOWN) {
-			printf(" DOWN ");
-		}
-		if (current_direction == DIRN_STOP) {
-			printf(" STOP ");
-		}
+		
 		
 	}
 	return 0;
