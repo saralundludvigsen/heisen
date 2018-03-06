@@ -11,18 +11,21 @@
 
 
 bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
-	//is_order(button_type button, int floor);
 
 	int current_floor = elev_get_floor_sensor_signal();
-	//dersom kø er tom eller commandknapp trykket, bryr vi oss ikke om retning:
 	//ikke i etasje:
 	if (current_floor == -1) {//dobbeltsjekk -1
 		return false;
 	}
-	//BUTTON_COMMAND
+	//BUTTON_COMMAND trykket: bryr oss ikke om retning heisen har nå
 	if (is_order(BUTTON_COM, current_floor)) {
 		return true;
 	}
+	//4 etasje: //trenger ikke pga den under?
+	if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
+		return true;
+	}
+
 	//BUTTON_UP og BUTTON_DOWN:
 	//her bryr vi oss om retning til heisen.
 	if (is_order(BUTTON_DOWN, current_floor) && current_direction == DIRN_DOWN) {
@@ -30,6 +33,26 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	}
 	if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
 		return true;
+	}
+
+	//dersom den kjører OPP og denne bestillingen er den ØVERSTE (og ned, de andre tar seg av resten): return true
+	if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
+		bool isOrderAbove = false;
+		for (int i = current_floor + 1; i < N_FLOORS; i++) {
+			for (button_type button = BUTTON_DOWN; button <= BUTTON_COM; button++) {
+				if (is_order(button, i)) {
+					isOrderAbove = true;
+
+				}
+			}
+			if (isOrderAbove) {
+				return false;
+			}
+			else if (!isOrderAbove) {
+				return true;
+			}
+		}
+		//if (current_direction == DIRN_DOWN){}
 	}
 	else {
 		return false;
@@ -50,7 +73,25 @@ elev_motor_direction_t get_direction(int floor_in, int floor_to) {
 }*/
 
 elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr_dir) {
-	if (curr_dir == DIRN_UP) {
+	//test - uten retning:
+	for (int i = prev_floor; i < N_FLOORS; i++) {
+		//har bestilling til etasje over den den er i
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+			return DIRN_UP;
+		}
+	}
+	//else:
+	for (int i = 0; i < prev_floor; i++) {
+		//har bestilling til etasje under den den er i
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+			return DIRN_DOWN;
+		}
+	}
+	return DIRN_STOP;
+
+
+
+	/*if (curr_dir == DIRN_UP) {
 		for (int i = prev_floor; i < N_FLOORS; i++) {
 			//har bestilling til etasje over den den er i og er på vei opp
 			if ((is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i))) {
@@ -89,12 +130,12 @@ elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr
 				else if (prev_floor > i) {
 					return DIRN_DOWN;
 				}
-                else{
-                    return DIRN_STOP;
-                }
+				else{
+					return DIRN_STOP;
+				}
 			}
 		}
 	}
 	//ta seg av andre merkelige tilfeller
-	//return DIRN_STOP;
+	//return DIRN_STOP;*/
 }

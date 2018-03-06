@@ -26,9 +26,8 @@ void event_emergency_stop_pushed() {
         state = stop_door_open;
 
 	}
-    
-	//state = emergency_stop;
-    state = stop;
+
+	state = emergency_stop;
 }
 
 void event_button_pushed(int floor, button_type button) {

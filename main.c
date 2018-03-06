@@ -12,6 +12,7 @@
 #include <stdio.h>
 //#include "queue.h"
 #include "handling.h"
+#include "timer.h"
 
 
 //i FSM:
@@ -26,7 +27,6 @@ int main() {
         printf("Unable to initialize elevator hardware!\n");
         return 1;
     }
-    //queue init:
     
     initialize_queue();
     initialize_state();
@@ -49,7 +49,7 @@ int main() {
         }
         current_direction = get_direction(prev_floor, current_direction);
         //current_direction = get_direction(prev_floor, current_direction);
-        
+
         
         //skal kun sjekke knappetrykk og legge til i køen
         for(int i = 0; i < N_FLOORS; i++){
@@ -98,5 +98,6 @@ int main() {
         
     }
     return 0;
+
 }
 
