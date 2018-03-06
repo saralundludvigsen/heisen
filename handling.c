@@ -16,9 +16,9 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	int current_floor = elev_get_floor_sensor_signal();
 	//dersom kø er tom eller commandknapp trykket, bryr vi oss ikke om retning:
 	//ikke i etasje:
-	/*if (current_floor == -1) {//dobbeltsjekk -1
+	if (current_floor == -1) {//dobbeltsjekk -1
 		return false;
-	}*/
+	}
 	//BUTTON_COMMAND
 	if (is_order(BUTTON_COM, current_floor)) {
 		return true;
