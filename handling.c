@@ -19,7 +19,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	}
 	//BUTTON_COMMAND trykket: bryr oss ikke om retning heisen har nå
 	else if (is_order(BUTTON_COM, current_floor)) {
-		printf("command anyways");
+		printf("command anyways\n");
 		return true;
 	}
 	//4 etasje: //trenger ikke pga den under?
