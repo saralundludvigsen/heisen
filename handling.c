@@ -18,29 +18,29 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		return false;
 	}
 	//BUTTON_COMMAND trykket: bryr oss ikke om retning heisen har nå
-	if (is_order(BUTTON_COM, current_floor)) {
+	else if (is_order(BUTTON_COM, current_floor)) {
 		printf("command anyways");
 		return true;
 	}
 	//4 etasje: //trenger ikke pga den under?
-	if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
+	else if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
 		printf("4th floor order\n");
 		return true;
 	}
 
 	//BUTTON_UP og BUTTON_DOWN:
 	//her bryr vi oss om retning til heisen.
-	if (is_order(BUTTON_DOWN, current_floor) && current_direction == DIRN_DOWN) {
+	else if (is_order(BUTTON_DOWN, current_floor) && current_direction == DIRN_DOWN) {
 		printf("on the way down\n");
 		return true;
 	}
-	if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
+	else if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {
 		printf("goin up\n");
 		return true;
 	}
 
 	//dersom den kjører OPP og denne bestillingen er den ØVERSTE (og ned, de andre tar seg av resten): return true
-	if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
+	else if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
 		bool isOrderAbove = false;
 		for (int i = current_floor + 1; i < N_FLOORS; i++) {
 			for (button_type button = BUTTON_DOWN; button <= BUTTON_COM; button++) {
