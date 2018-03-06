@@ -47,15 +47,9 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		if (elev_get_floor_sensor_signal()==3) {
-			printf("4 ETASJEEEEEEEEEEE");
-		}
     
-		
-        //
 		//current_direction = get_direction(prev_floor, current_direction);
  
-        
         
 		//skal kun sjekke knappetrykk og legge til i køen
 		for(int i = 0; i < N_FLOORS; i++){
