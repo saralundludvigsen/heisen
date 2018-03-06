@@ -80,6 +80,7 @@ int main() {
             //test: current_direction=DIRN_UP; //FUNKER
 			current_direction = get_direction(prev_floor, current_direction);
             event_queue_not_empty(current_direction);
+
 			if (current_direction == DIRN_UP) {
 				printf(" UP ");
 			}
