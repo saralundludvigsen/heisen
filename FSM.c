@@ -45,7 +45,7 @@ void event_button_pushed(int floor, button_type button) {
 }
 
 void event_queue_is_empty() {
-    switch state{
+    switch (state) {
         
     case (emergency_stop):
         break;
