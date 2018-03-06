@@ -71,10 +71,10 @@ int main() {
 		}
 		if (current_direction == DIRN_STOP) {
 			printf(" STOP ");
-		}
+		}*/
 		if(reached_floor_to_stop_in(current_direction)){
 			event_reached_floor();
-		}*/
+		}
 
 		/*else*/ if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
