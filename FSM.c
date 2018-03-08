@@ -55,6 +55,7 @@ void event_queue_is_empty() {
         case (drive):
         case (stop):
             break;
+    }
 }
 
 void z_drive(elev_motor_direction_t current_direction){
