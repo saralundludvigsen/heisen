@@ -58,7 +58,6 @@ void event_queue_is_empty() {
                 state = stop;
             }
             else if (seccounter() < 3){
-                printf((char) current_time);
             }
             break;
         case (drive):
