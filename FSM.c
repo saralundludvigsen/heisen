@@ -51,12 +51,14 @@ void event_queue_is_empty() {
             break;
         case (stop_door_open):
             
+            int current_time = seccounter();
+            
             if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
             else if (seccounter() < 3){
-                printf("mindre");
+                printf((char) current_time);
             }
             break;
         case (drive):
