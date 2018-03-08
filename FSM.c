@@ -51,7 +51,7 @@ void event_queue_is_empty() {
             break;
         case (stop_door_open):
             
-            //int current_time = seccounter();
+            sprintf(seccounter());
             
             if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
