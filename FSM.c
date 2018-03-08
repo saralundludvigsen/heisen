@@ -7,7 +7,6 @@
 //
 
 #include "FSM.h"
-static int previous_floor;
 static  State state;
 
 void initialize_state() {
