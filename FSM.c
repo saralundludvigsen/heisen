@@ -92,6 +92,7 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 }
 
 void event_reached_floor() {
+    printf("in it");
     switch(state){
         case(emergency_stop):
             printf("State: emergency stop ");
@@ -114,7 +115,7 @@ void event_reached_floor() {
 }
 
 void event_stop_door_open() {
-    printf("in event_stop_door_open");
+    printf("in event_stop_door_open ");
     //Hold døra åpen i 3 sek
     //dette går ikke
     start = start_timer();
