@@ -46,7 +46,6 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		current_direction = get_direction(prev_floor, current_direction);
 		//current_direction = get_direction(prev_floor, current_direction);
  
 		//sjekker hele tiden om og hvilken knapp som er trykket
@@ -63,7 +62,7 @@ int main() {
 		}
         
         //print_queue();
-		/*if (current_direction == DIRN_UP) {
+		if (current_direction == DIRN_UP) {
 			printf(" UP ");
 		}
 		if (current_direction == DIRN_DOWN) {
@@ -71,7 +70,7 @@ int main() {
 		}
 		if (current_direction == DIRN_STOP) {
 			printf(" STOP ");
-		}*/
+		}
 
 
 		if(reached_floor_to_stop_in(current_direction)){
