@@ -43,7 +43,7 @@ void event_button_pushed(int floor, button_type button) {
             break;
     }
 }
-int now;
+static int now = 0;
 void event_queue_is_empty() {
     switch (state) {
             
@@ -55,7 +55,9 @@ void event_queue_is_empty() {
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
-            else if (seccounter() < 3){
+            else if ((seccounter() < 3) && now == 0){
+                printf("mindre \n");
+                now++;
             }
             break;
         case (drive):
