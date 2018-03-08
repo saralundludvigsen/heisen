@@ -8,7 +8,7 @@
 
 #include "FSM.h"
 static int previous_floor;
-static clock_t start;
+//static int start;
 static  State state;
 
 void initialize_state() {
@@ -21,7 +21,7 @@ void event_emergency_stop_pushed() {
     empty_queue();
     if (elev_get_floor_sensor_signal() >= 0) {
         event_stop_door_open();
-        start = start_timer();
+        //start = start_timer();
         state = stop_door_open;
         
         
@@ -51,11 +51,11 @@ void event_queue_is_empty() {
             break;
         case (stop_door_open):
             //printf("State: stop door open");
-            if (current_time() - start >= 3){
+            if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
-            else if (current_time() - start < 3){
+            else if (seccounter() < 3){
                 printf("mindre");
             }
             break;
@@ -80,11 +80,12 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
         case (emergency_stop):
             break;
         case (stop_door_open):
-            if (current_time() - start >= 3){
+            if ( seccounter >= 3){
                 elev_set_door_open_lamp(0);
+                state = stop;
                 
             }
-            else if (current_time() - start < 3){
+            else if (seccounter() < 3){
                 printf("mindre");
             }
             break;
@@ -128,7 +129,7 @@ void event_stop_door_open() {
     printf("in event_stop_door_open \n");
     //Hold døra åpen i 3 sek
     //dette går ikke
-    start = start_timer();
+    seccounter();
     elev_set_door_open_lamp(1);
 
 }
@@ -213,6 +214,35 @@ void print_queue(){
 
 //-------------------------------------------
 //TIMER
+
+int seccounter(void){
+    
+    static time_t start;
+    time_t finish = 0;
+    time_t difference = 0;
+    int seconds = 0;
+    static int toggle = 0;
+    
+    if (toggle == 0){
+        start = time(0);
+        toggle = 1;
+        return 0;
+    }
+    
+    else if (toggle == 1){
+        finish = time(0);
+        difference = start - finish;
+        if ((int) difference >= 3){
+            toggle = 0;
+            return (int) difference;
+        }
+        else{
+            return (int) difference;
+        }
+    }
+    
+}
+
 
 clock_t start_timer(){
     clock_t start = clock();

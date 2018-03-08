@@ -71,6 +71,7 @@ void print_queue();
 //-------------------------------
 //TIMER
 
+int seccounter(void);
 clock_t start_timer();
 clock_t current_time();
 
