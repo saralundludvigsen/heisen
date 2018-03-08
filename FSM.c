@@ -50,7 +50,7 @@ void event_queue_is_empty() {
         case (emergency_stop):
             break;
         case (stop_door_open):
-            //printf("State: stop door open");
+            
             if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
                 state = stop;
@@ -80,7 +80,7 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
         case (emergency_stop):
             break;
         case (stop_door_open):
-            if ( seccounter >= 3){
+            if ( seccounter() >= 3){
                 elev_set_door_open_lamp(0);
                 state = stop;
                 
@@ -220,7 +220,7 @@ int seccounter(void){
     static time_t start;
     time_t finish = 0;
     time_t difference = 0;
-    int seconds = 0;
+    //int seconds = 0;
     static int toggle = 0;
     
     if (toggle == 0){
