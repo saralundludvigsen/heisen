@@ -29,19 +29,17 @@ void event_emergency_stop_pushed() {
 }
 
 void event_button_pushed(int floor, button_type button) {
-	switch (state) {
-
-	case (emergency_stop):
-		break;
-	case(stop):
-            //printf("vier i state stopp");
-	case(drive):
-		add_to_queue(floor, button);
-        //printf("lagt til");
-		break;
-	}
+    switch (state) {
+            
+        case (emergency_stop):
+            break;
+        case (stop_door_open):
+        case(stop):
+        case(drive):
+            add_to_queue(floor, button);
+            break;
+    }
 }
-
 void event_queue_is_empty() {
 	elev_set_motor_direction(DIRN_STOP);
 	state = stop;
