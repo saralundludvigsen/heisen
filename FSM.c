@@ -109,14 +109,12 @@ void event_reached_floor() {
 }
 
 void event_stop_door_open() {
-	//Hold døra åpen i 3 sek
-	//dette går ikke
-	elev_set_door_open_lamp(1);
-	sleep(3);
-	elev_set_door_open_lamp(0);
-	//state = stop;
+    //Hold døra åpen i 3 sek
+    //dette går ikke
+    start = start_timer();
+    elev_set_door_open_lamp(1);
 }
-
+}
 //------------------------------------------------------------------
 //QUEUE
 
