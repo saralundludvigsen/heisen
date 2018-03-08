@@ -55,6 +55,9 @@ void event_queue_is_empty() {
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
+            else if (current_time() - start < 3){
+                printf("mindre");
+            }
             break;
         case (drive):
         case (stop):
