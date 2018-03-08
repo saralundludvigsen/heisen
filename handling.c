@@ -36,7 +36,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		return true;
 	}
 	//1. etasje + button up:
-	else if (current_floor == 0 && is_order(BUTTON_UP, 3)) {
+	else if (current_floor == 0 && is_order(BUTTON_UP, 0)) {
 		printf("1st floor order\n");
 		return true;
 	}
