@@ -15,14 +15,17 @@ void initialize_state() {
 }
 
 void event_emergency_stop_pushed() {
-
-	elev_set_motor_direction(DIRN_STOP);
-	empty_queue();
-	if (elev_get_floor_sensor_signal() >= 0) {
-		event_stop_door_open();
-	}
-	//state = emergency_stop;
-    state = stop;
+    
+    elev_set_motor_direction(DIRN_STOP);
+    empty_queue();
+    if (elev_get_floor_sensor_signal() >= 0) {
+        event_stop_door_open();
+        start = start_timer();
+        state = stop_door_open;
+        
+    }
+    
+    state = emergency_stop;
 }
 
 void event_button_pushed(int floor, button_type button) {
