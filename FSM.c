@@ -8,7 +8,7 @@
 
 #include "FSM.h"
 static int previous_floor;
-//static int start;
+static time_t start;
 static  State state;
 
 void initialize_state() {
@@ -218,7 +218,6 @@ void print_queue(){
 
 int seccounter(void){
     
-    static time_t start;
     time_t finish = 0;
     time_t difference = 0;
     //int seconds = 0;
