@@ -120,6 +120,7 @@ void event_reached_floor() {
             printf("State: stop door open \n");
             event_stop_door_open();
             remove_from_queue(elev_get_floor_sensor_signal());
+            state = stop_door_open;
             break;
     }
 }
