@@ -23,11 +23,12 @@ void event_emergency_stop_pushed() {
         event_stop_door_open();
         start = start_timer();
         state = stop_door_open;
-        break;
+        
         
     }
-    
-    state = emergency_stop;
+    else{
+        state = emergency_stop;
+    }
 }
 
 void event_button_pushed(int floor, button_type button) {
