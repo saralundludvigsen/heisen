@@ -129,6 +129,7 @@ void event_stop_door_open() {
     //Hold døra åpen i 3 sek
     //dette går ikke
     start = start_timer();
+    printf((char)start," \n");
     elev_set_door_open_lamp(1);
 
 }
