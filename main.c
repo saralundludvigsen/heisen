@@ -46,7 +46,6 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		//current_direction = get_direction(prev_floor, current_direction);
  
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
@@ -78,10 +77,8 @@ int main() {
 		} 
 
 		else if (!queue_is_empty()){
-			//Her bare tester man om det har blitt lagt til noe i queue
-            //test: current_direction=DIRN_UP; //FUNKER
-			current_direction = get_direction(prev_floor, current_direction); //funker ish
-			//får UP STOP UP STOP når man vil opp fra første etg
+			//kjør hvis lagt til noe i queue
+			current_direction = get_direction(prev_floor); //funker!!!!
             event_queue_not_empty(current_direction);
 
 		}

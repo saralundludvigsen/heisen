@@ -60,7 +60,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 }
 
 
-elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t curr_dir) {
+elev_motor_direction_t get_direction(int prev_floor) {
 	//test - uten retning:
 	for (int i = prev_floor+1; i < N_FLOORS; i++) {
 		//har bestilling til etasje over den den er i
