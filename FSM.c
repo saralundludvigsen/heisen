@@ -43,12 +43,15 @@ void event_button_pushed(int floor, button_type button) {
 }
 
 void event_queue_is_empty() {
+    printf("Queue is empty");
     switch (state) {
             
         case (emergency_stop):
             break;
         case (stop_door_open):
+            printf("State: stop door open");
             if (current_time() - start >= 3){
+                printf("turning of lamp");
                 elev_set_door_open_lamp(0);
             }
             break;
@@ -93,12 +96,16 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 void event_reached_floor() {
     switch(state){
         case(emergency_stop):
+            printf("State: emergency stop");
             break;
         case(stop_door_open):
+            printf("State: stop door open");
             event_stop_door_open();
             remove_from_queue(elev_get_floor_sensor_signal());
         case(drive):
+            printf("State: drive");
         case(stop):
+            printf("stop");
             z_stop();
             state = stop_door_open;
             //event_stop_door_open();
@@ -109,6 +116,7 @@ void event_reached_floor() {
 }
 
 void event_stop_door_open() {
+    printf("in event_stop_door_open");
     //Hold døra åpen i 3 sek
     //dette går ikke
     start = start_timer();
