@@ -66,23 +66,28 @@ void z_drive(elev_motor_direction_t current_direction){
 
 void z_stop(){
 	elev_set_motor_direction(DIRN_STOP);
-	state = stop;
-}	
+}
 
 void event_queue_not_empty(elev_motor_direction_t current_direction) {
-	switch (state) {
-	case (emergency_stop):
-		break;
-	case (drive):
-		/*if (reached_floor_to_stop_in()) {
-			z_stop();
-			event_stop_door_open();
-		}*/
-		break;
-	case (stop):
-		z_drive(current_direction);
-		break;
-	}
+    switch (state) {
+        case (emergency_stop):
+            break;
+        case (stop_door_open):
+            if (current_time() - start >= 3){
+                elev_set_door_open_lamp(0);
+                
+            }
+            break;
+        case (drive):
+            /*if (reached_floor_to_stop_in()) {
+             z_stop();
+             event_stop_door_open();
+             }*/
+            break;
+        case (stop):
+            z_drive(current_direction);
+            break;
+    }
 }
 
 void event_reached_floor() {
