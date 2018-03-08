@@ -111,20 +111,15 @@ void event_reached_floor() {
         case(emergency_stop):
             printf("State: emergency stop \n");
             break;
-        case(stop_door_open):
-            printf("State: stop door open \n");
-            event_stop_door_open();
-            remove_from_queue(elev_get_floor_sensor_signal());
-            break;
         case(drive):
             printf("State: drive \n");
         case(stop):
             printf("State: stop \n");
             z_stop();
-            state = stop_door_open;
-            //event_stop_door_open();
-            //slett bestilling: --> da vil den kjøre videre
-            
+        case(stop_door_open):
+            printf("State: stop door open \n");
+            event_stop_door_open();
+            remove_from_queue(elev_get_floor_sensor_signal());
             break;
     }
 }
