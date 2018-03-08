@@ -234,7 +234,7 @@ int seccounter(void){
         }
         
         finish = time(0);
-        difference = start - finish;
+        difference = finish - start;
         if ((int) difference >= 3){
             //printf("difference larger then 3, toggle = 0");
             toggle = 0;
