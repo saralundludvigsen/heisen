@@ -20,6 +20,7 @@
 
 
 int main() {
+	//EMERGENCY FIX BRANCH
 	printf("Programmet kjører!");
 
 	if (elev_init() == 0) {
@@ -35,11 +36,13 @@ int main() {
 	elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
 	int prev_floor = 0; //antar at start i 1. etasje
+	elev_motor_direction_t dir_before_emergency = DIRN_UP;
 	//------------------------------------------------------------------------------
     
 	while (1) {
 		
 		if (elev_get_stop_signal() == 1) {
+			dir_before_emergency=current_direction;
 			event_emergency_stop_pushed();
 		}
 		//oppdaterer prev_floor:
