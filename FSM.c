@@ -50,8 +50,6 @@ void event_queue_is_empty() {
         case (emergency_stop):
             break;
         case (stop_door_open):
-            now = seccounter();
-            sprintf((char) now);
             
             if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
