@@ -236,12 +236,12 @@ int seccounter(void){
         finish = time(0);
         difference = start - finish;
         if ((int) difference >= 3){
-            printf("difference larger then 3, toggle = 0");
+            //printf("difference larger then 3, toggle = 0");
             toggle = 0;
             return (int) difference;
         }
         else{
-            printf("difference smaller then 3, toggle = 1");
+            //printf("difference smaller then 3, toggle = 1");
             return (int) difference;
         }
     }
