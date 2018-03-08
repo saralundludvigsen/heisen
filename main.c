@@ -73,6 +73,7 @@ int main() {
 			printf(" STOP ");
 		}*/
 		if(reached_floor_to_stop_in(current_direction)){
+            printf("går inn i if-en! ");
 			event_reached_floor();
 		}
 

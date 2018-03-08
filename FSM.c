@@ -23,6 +23,7 @@ void event_emergency_stop_pushed() {
         event_stop_door_open();
         start = start_timer();
         state = stop_door_open;
+        break;
         
     }
     
@@ -92,19 +93,19 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 }
 
 void event_reached_floor() {
-    printf("in it");
+    printf("in it \n");
     switch(state){
         case(emergency_stop):
-            printf("State: emergency stop ");
+            printf("State: emergency stop \n");
             break;
         case(stop_door_open):
-            printf("State: stop door open");
+            printf("State: stop door open \n");
             event_stop_door_open();
             remove_from_queue(elev_get_floor_sensor_signal());
         case(drive):
-            printf("State: drive ");
+            printf("State: drive \n");
         case(stop):
-            printf("State: stop ");
+            printf("State: stop \n");
             z_stop();
             state = stop_door_open;
             //event_stop_door_open();
@@ -115,7 +116,7 @@ void event_reached_floor() {
 }
 
 void event_stop_door_open() {
-    printf("in event_stop_door_open ");
+    printf("in event_stop_door_open \n");
     //Hold døra åpen i 3 sek
     //dette går ikke
     start = start_timer();
