@@ -8,6 +8,7 @@
 #pragma once
 #ifndef FSM_h
 #define FSM_h
+#include <time.h>
 
 #include <stdio.h>
 #include <unistd.h>
@@ -67,5 +68,10 @@ bool is_order(button_type button, int floor);
 
 void print_queue();
 
+//-------------------------------
+//TIMER
+
+clock_t start_timer();
+clock_t current_time();
 
 #endif /* FSM_h */

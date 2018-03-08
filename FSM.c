@@ -194,3 +194,17 @@ void print_queue(){
     }
 }
 
+//-------------------------------------------
+//TIMER
+
+clock_t start_timer(){
+    clock_t start = clock();
+    return start;
+}
+
+clock_t current_time(){
+    clock_t curr = clock();
+    return curr;
+}
+
+
