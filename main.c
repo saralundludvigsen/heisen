@@ -40,7 +40,8 @@ int main() {
 	while (1) {
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
-		if (elev_get_stop_signal() == 1) {
+		elev_set_motor_direction(DIRN_UP);
+		/*if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
 		//oppdaterer prev_floor:
@@ -94,7 +95,7 @@ int main() {
 		else if (queue_is_empty()){
 			event_queue_is_empty();
 		}
-		
+		*/
 		
 	}
 	return 0;
