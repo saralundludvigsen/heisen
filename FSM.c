@@ -43,15 +43,15 @@ void event_button_pushed(int floor, button_type button) {
             break;
     }
 }
-
+int now;
 void event_queue_is_empty() {
     switch (state) {
             
         case (emergency_stop):
             break;
         case (stop_door_open):
-            
-            sprintf(seccounter());
+            now = seccounter();
+            sprintf(now);
             
             if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
