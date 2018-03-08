@@ -91,17 +91,21 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 }
 
 void event_reached_floor() {
-	switch(state){
-		case(emergency_stop):
-			break;
-		case(drive):
-		case(stop):
-			z_stop();
-			event_stop_door_open();
-			//slett bestilling: --> da vil den kjøre videre
-			remove_from_queue(elev_get_floor_sensor_signal());
-			break;
-	}
+    switch(state){
+        case(emergency_stop):
+            break;
+        case(stop_door_open):
+            event_stop_door_open();
+            remove_from_queue(elev_get_floor_sensor_signal());
+        case(drive):
+        case(stop):
+            z_stop();
+            state = stop_door_open;
+            //event_stop_door_open();
+            //slett bestilling: --> da vil den kjøre videre
+            
+            break;
+    }
 }
 
 void event_stop_door_open() {
