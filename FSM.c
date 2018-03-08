@@ -113,7 +113,7 @@ void event_stop_door_open() {
     //dette går ikke
     start = start_timer();
     elev_set_door_open_lamp(1);
-}
+
 }
 //------------------------------------------------------------------
 //QUEUE
