@@ -224,19 +224,23 @@ int seccounter(void){
     static int toggle = 0;
     
     if (toggle == 0){
+        printf("toggle = 0 \n");
         start = time(0);
         toggle = 1;
         return 0;
     }
     
     else if (toggle == 1){
+        printf("toggle = 1 \n");
         finish = time(0);
         difference = start - finish;
         if ((int) difference >= 3){
+            printf("difference larger then 3, toggle = 0");
             toggle = 0;
             return (int) difference;
         }
         else{
+            printf("difference smaller then 3, toggle = 1");
             return (int) difference;
         }
     }
