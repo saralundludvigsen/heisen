@@ -31,15 +31,15 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		return true;
 	}
 	//4. etasje + button down:
-	else if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
-		printf("4th floor down\n");
+	/*else if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
+		
 		return true;
 	}
 	//1. etasje + button up:
 	else if (current_floor == 0 && is_order(BUTTON_UP, 0)) {
 		printf("1st floor order\n");
 		return true;
-	}
+	}*/
 
 	//BUTTON_UP og BUTTON_DOWN:
 	//her bryr vi oss om retning til heisen.
@@ -55,7 +55,12 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	//dersom f.eks. bare nedknapper på vei opp osv.:
 	//SLÅ SAMMEN DISSE MED SJEKK FOR 4 OG 1 ETG
 	//dersom den kjører OPP og denne bestillingen er NED og den ØVERSTE: return true.
-	else if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
+	else if ((current_direction == DIRN_UP) && is_order(BUTTON_DOWN, current_floor)) {
+		//ned i 4 etg:
+		if (current_floor == 3) {
+			printf("new 4th floor down\n");
+			return true;
+		}
 		bool isOrderAbove = false;
 		for (int i = current_floor + 1; i < N_FLOORS; i++) {
 			if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
@@ -72,7 +77,11 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		}
 	}
 	//dersom den kjører NED og denne bestillingen er OPP og den NEDERSTE: return true.
-	else if ((current_direction == DIRN_DOWN) && (current_floor > 0) && is_order(BUTTON_UP, current_floor)) {
+	else if ((current_direction == DIRN_DOWN) && is_order(BUTTON_UP, current_floor)) {
+		if (current_floor == 0) {
+			printf("new 1st floor up\n");
+			return true;
+		}
 		bool isOrderBelow = false;
 		for (int i = current_floor - 1; i > 0; i--) {
 			if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
@@ -88,9 +97,6 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 			return true;
 		}
 	}
-
-
-
 
 	else {
 		//printf("other\n");
