@@ -9,6 +9,8 @@
 #include "FSM.h"
 static int previous_floor;
 static time_t start;
+static int toggle = 0;
+
 static  State state;
 
 void initialize_state() {
@@ -221,7 +223,6 @@ int seccounter(void){
     time_t finish = 0;
     time_t difference = 0;
     //int seconds = 0;
-    static int toggle = 0;
     
     if (toggle == 0){
         printf("toggle = 0 \n");
