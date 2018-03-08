@@ -10,7 +10,7 @@
 static int previous_floor;
 static time_t start;
 static int toggle = 0;
-static int now = 0;
+static int nox = 0;
 
 static  State state;
 
@@ -235,7 +235,7 @@ int seccounter(void){
     else if (toggle == 1){
         if (now == 0){
             printf("toggle = 1 \n");
-            now++;
+            nox++;
         }
         
         finish = time(0);
