@@ -50,7 +50,6 @@ void event_queue_is_empty() {
         case (stop_door_open):
             printf("State: stop door open");
             if (current_time() - start >= 3){
-                printf("turning of lamp");
                 elev_set_door_open_lamp(0);
             }
             break;
