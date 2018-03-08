@@ -20,6 +20,7 @@
 
 
 int main() {
+	//EMERGENCY FIX BRANCH
 	printf("Programmet kjører!");
 
 	if (elev_init() == 0) {
