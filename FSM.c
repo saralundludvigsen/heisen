@@ -53,6 +53,7 @@ void event_queue_is_empty() {
             //printf("State: stop door open");
             if (current_time() - start >= 3){
                 elev_set_door_open_lamp(0);
+                state = stop;
             }
             break;
         case (drive):
@@ -103,6 +104,7 @@ void event_reached_floor() {
             printf("State: stop door open \n");
             event_stop_door_open();
             remove_from_queue(elev_get_floor_sensor_signal());
+            break;
         case(drive):
             printf("State: drive \n");
         case(stop):
