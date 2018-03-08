@@ -52,6 +52,46 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		return true;
 	}
 
+	//dersom f.eks. bare nedknapper på vei opp osv.:
+	//SLÅ SAMMEN DISSE MED SJEKK FOR 4 OG 1 ETG
+	//dersom den kjører OPP og denne bestillingen er NED og den ØVERSTE: return true.
+	else if ((current_direction == DIRN_UP) && (current_floor < 3) && is_order(BUTTON_DOWN, current_floor)) {
+		bool isOrderAbove = false;
+		for (int i = current_floor + 1; i < N_FLOORS; i++) {
+			if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+				isOrderAbove = true;
+				break;
+			}
+		}
+		if (isOrderAbove) {
+			return false;
+		}
+		else if (!isOrderAbove) {
+			printf("no orders above!\n");
+			return true;
+		}
+	}
+	//dersom den kjører NED og denne bestillingen er OPP og den NEDERSTE: return true.
+	else if ((current_direction == DIRN_DOWN) && (current_floor > 0) && is_order(BUTTON_UP, current_floor)) {
+		bool isOrderBelow = false;
+		for (int i = current_floor - 1; i > 0; i--) {
+			if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+				isOrderBelow = true;
+				break;
+			}
+		}
+		if (isOrderBelow) {
+			return false;
+		}
+		else if (!isOrderBelow) {
+			printf("no orders below!\n");
+			return true;
+		}
+	}
+
+
+
+
 	else {
 		//printf("other\n");
 		return false;
@@ -62,7 +102,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 
 elev_motor_direction_t get_direction(int prev_floor) {
 	//test - uten retning:
-	for (int i = prev_floor+1; i < N_FLOORS; i++) {
+	for (int i = prev_floor + 1; i < N_FLOORS; i++) {
 		//har bestilling til etasje over den den er i
 		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
 			return DIRN_UP;
