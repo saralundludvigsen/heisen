@@ -11,15 +11,6 @@
 
 
 bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
-	//if (current_direction == DIRN_UP) {
-	//	printf(" OPP ");
-	//}
-	//if (current_direction == DIRN_DOWN) {
-	//	printf(" NED ");
-	//}
-	//if (current_direction == DIRN_STOP) {
-	//	printf(" STOPP ");
-	//}
 	int current_floor = elev_get_floor_sensor_signal();
 	//ikke i etasje, ekstra sikkerhet
 	if (current_floor == -1) {
@@ -30,16 +21,6 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		printf("command\n");
 		return true;
 	}
-	//4. etasje + button down:
-	/*else if (current_floor == 3 && is_order(BUTTON_DOWN, 3)) {
-		
-		return true;
-	}
-	//1. etasje + button up:
-	else if (current_floor == 0 && is_order(BUTTON_UP, 0)) {
-		printf("1st floor order\n");
-		return true;
-	}*/
 
 	//BUTTON_UP og BUTTON_DOWN:
 	//her bryr vi oss om retning til heisen.
@@ -52,8 +33,6 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 		return true;
 	}
 
-	//dersom f.eks. bare nedknapper på vei opp osv.:
-	//SLÅ SAMMEN DISSE MED SJEKK FOR 4 OG 1 ETG
 	//dersom den kjører OPP og denne bestillingen er NED og den ØVERSTE: return true.
 	else if ((current_direction == DIRN_UP) && is_order(BUTTON_DOWN, current_floor)) {
 		//ned i 4 etg:
