@@ -233,7 +233,7 @@ int seccounter(void){
     }
     
     else if (toggle == 1){
-        if (now == 0){
+        if (nox == 0){
             printf("toggle = 1 \n");
             nox++;
         }
