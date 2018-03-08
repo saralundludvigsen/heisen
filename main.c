@@ -76,7 +76,7 @@ int main() {
 			event_reached_floor();
 		}
 
-		/*else*/ if (!queue_is_empty()){
+		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
 			//event_queue_not_empty();
             //test: current_direction=DIRN_UP; //FUNKER
