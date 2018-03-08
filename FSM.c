@@ -84,6 +84,9 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
                 elev_set_door_open_lamp(0);
                 
             }
+            else if (current_time() - start < 3){
+                printf("mindre");
+            }
             break;
         case (drive):
             /*if (reached_floor_to_stop_in()) {
