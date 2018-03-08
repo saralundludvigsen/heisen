@@ -55,7 +55,7 @@ void event_queue_is_empty() {
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
-            else if ((seccounter() < 3) && now == 0){
+            else if ((seccounter() > 0) && now == 0){
                 printf("mindre \n");
                 now++;
             }
