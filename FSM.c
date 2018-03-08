@@ -97,7 +97,7 @@ void event_reached_floor() {
             printf("State: emergency stop");
             break;
         case(stop_door_open):
-            printf("State: stop door open");
+            //printf("State: stop door open");
             event_stop_door_open();
             remove_from_queue(elev_get_floor_sensor_signal());
         case(drive):
