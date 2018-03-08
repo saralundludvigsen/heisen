@@ -46,7 +46,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 			for (button_type button = BUTTON_DOWN; button <= BUTTON_COM; button++) {
 				if (is_order(button, i)) {
 					isOrderAbove = true;
-
+					break;
 				}
 			}
 			if (isOrderAbove) {
@@ -66,6 +66,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 			for (button_type button = BUTTON_DOWN; button <= BUTTON_COM; button++) {
 				if (is_order(button, i)) {
 					isOrderBelow = true;
+					break;
 				}
 			}
 			if (isOrderBelow) {

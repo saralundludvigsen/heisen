@@ -79,17 +79,11 @@ int main() {
 
 		else if (!queue_is_empty()){
 			//Her bare tester man om det har blitt lagt til noe i queue
-			//event_queue_not_empty();
             //test: current_direction=DIRN_UP; //FUNKER
 			current_direction = get_direction(prev_floor, current_direction); //funker ish
 			//får UP STOP UP STOP når man vil opp fra første etg
             event_queue_not_empty(current_direction);
 
-			
-
-			//test: elev_set_motor_direction(DIRN_UP);
-			//event_queue_not_empty(direction);
-			//event_drive hit
 		}
 		else if (queue_is_empty()){
 			event_queue_is_empty();
