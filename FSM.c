@@ -43,7 +43,6 @@ void event_button_pushed(int floor, button_type button) {
 }
 
 void event_queue_is_empty() {
-    printf("Queue is empty");
     switch (state) {
             
         case (emergency_stop):
