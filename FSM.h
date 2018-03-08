@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include "timer.h"
 #include "elev.h"
 #include "queue.h"
 

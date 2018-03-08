@@ -8,6 +8,7 @@
 
 #include "FSM.h"
 static int previous_floor;
+static clock_t start;
 static  State state;
 
 void initialize_state() {
