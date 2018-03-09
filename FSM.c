@@ -7,6 +7,11 @@
 //
 
 #include "FSM.h"
+#include "timer.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "elev.h"
+//#include "queue.h"
 static  State state;
 
 void initialize_state() {
