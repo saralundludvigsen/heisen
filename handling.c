@@ -7,7 +7,7 @@
 //
 
 #include "handling.h"
-#include "FSM.h"
+
 
 
 bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
@@ -85,7 +85,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 }
 
 
-elev_motor_direction_t get_direction(int prev_floor) {
+elev_motor_direction_t get_direction(int prev_floor, elev_motor_direction_t dir_before_emerg) {
 	//test - uten retning:
 	for (int i = prev_floor + 1; i < N_FLOORS; i++) {
 		//har bestilling til etasje over den den er i
@@ -100,5 +100,22 @@ elev_motor_direction_t get_direction(int prev_floor) {
 			return DIRN_DOWN;
 		}
 	}
+	//EMERGENCY && NOT IN FLOOR handling:
+	//else:
+	//problem: dette kan være tilfellet når den får bestilling til en etg rett etter at den var i den også. 
+	//burde derfor ha en true/false for emergency_outside_floor?
+	//dvs get/set for dir_before_emerg og bool emerg_outside_floor elns?
+	if (elev_get_floor_sensor_signal() == -1 && 
+		(is_order(BUTTON_UP,prev_floor)|| is_order(BUTTON_DOWN, prev_floor) || is_order(BUTTON_COM, prev_floor))){
+		//over prev_floor:
+		if (dir_before_emerg==DIRN_UP) {
+			return DIRN_DOWN;
+		}
+		//under prev_floor:
+		else if (dir_before_emerg == DIRN_DOWN) {
+			return DIRN_UP;
+		}
+	}
+
 	return DIRN_STOP;
 }
