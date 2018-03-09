@@ -26,30 +26,28 @@ int main() {
 		printf("Unable to initialize elevator hardware!\n");
 		return 1;
 	}
-	//queue init:
-    
+	//queue og state init:
 	initialize_queue();
 	initialize_state();
+	initialize_is_emergency_outside_floor();
 
-	// beholder etter initialisering. startbetingelse
-	//elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
-	int prev_floor = 0; //antar at start i 1. etasje
+	int last_floor_been_in = 0; //oppdateres med en gang i while dersom etg!=-1. Så ok.
+	int current_floor = 0; //er -1 når utenfor etasje
 	//------------------------------------------------------------------------------
     
 	while (1) {
+		current_floor = elev_get_floor_sensor_signal();
+
 		//nødstopp:
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
 
-		//oppdaterer prev_floor:
-		if (elev_get_floor_sensor_signal() != -1) {
-			prev_floor = elev_get_floor_sensor_signal();
-		}
-		//oppdaterer etasjelys:
- 		elev_set_floor_indicator(prev_floor);
-
+		//oppdaterer last_floor_been_in:
+		if (current_floor != -1) {
+			last_floor_been_in = update_floor_and_light(current_floor);
+		}		
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
 		//skal kun sjekke knappetrykk og legge til i køen, ikke håndtere
@@ -64,7 +62,8 @@ int main() {
 		}
         
         //print_queue();
-		/*if (current_direction == DIRN_UP) {
+	
+		if (current_direction == DIRN_UP) {
 			printf(" UP ");
 		}
 		if (current_direction == DIRN_DOWN) {
@@ -72,16 +71,16 @@ int main() {
 		}
 		if (current_direction == DIRN_STOP) {
 			printf(" STOP ");
-		}*/
-		
+		}
 
-		if(reached_floor_to_stop_in(current_direction)){
+		if(reached_floor_to_stop_in(current_direction, current_floor)){
 			event_reached_floor();
 		} 
 
 		else if (!queue_is_empty()){
 			//kjør hvis lagt til noe i queue
-			current_direction = get_direction(prev_floor); //funker!!!!
+			current_direction = get_direction(current_direction, last_floor_been_in); //funker!!!!
+
             event_queue_not_empty(current_direction);
 
 		}

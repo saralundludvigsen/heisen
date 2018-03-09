@@ -12,9 +12,8 @@
 #include "queue.h"
 
 
-bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
-	int current_floor = elev_get_floor_sensor_signal();
-	//ikke i etasje, ekstra sikkerhet
+bool reached_floor_to_stop_in(elev_motor_direction_t current_direction, int current_floor) {
+	//ikke i etasje, sjekke først
 	if (current_floor == -1) {
 		return false;
 	}
@@ -42,17 +41,10 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 			printf("new 4th floor down\n");
 			return true;
 		}
-		bool isOrderAbove = false;
-		for (int i = current_floor + 1; i < N_FLOORS; i++) {
-			if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
-				isOrderAbove = true;
-				break;
-			}
-		}
-		if (isOrderAbove) {
+		if (is_order_above(current_floor)) {
 			return false;
 		}
-		else if (!isOrderAbove) {
+		else if (!is_order_above(current_floor)) {
 			printf("no orders above!\n");
 			return true;
 		}
@@ -63,17 +55,10 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 			printf("new 1st floor up\n");
 			return true;
 		}
-		bool isOrderBelow = false;
-		for (int i = current_floor - 1; i > 0; i--) {
-			if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
-				isOrderBelow = true;
-				break;
-			}
-		}
-		if (isOrderBelow) {
+		if (is_order_below(current_floor)) {
 			return false;
 		}
-		else if (!isOrderBelow) {
+		else if (!is_order_below(current_floor)) {
 			printf("no orders below!\n");
 			return true;
 		}
@@ -83,20 +68,41 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 }
 
 
-elev_motor_direction_t get_direction(int prev_floor) {
+elev_motor_direction_t get_direction(elev_motor_direction_t current_direction, int last_floor_been_in) {
+
+	if(is_order_above(last_floor_been_in) && current_direction == DIRN_UP){
+		return DIRN_UP;
+	}
+	if(is_order_below(last_floor_been_in) && current_direction == DIRN_DOWN){
+		return DIRN_DOWN;
+	}
 	//test - uten retning:
-	for (int i = prev_floor + 1; i < N_FLOORS; i++) {
-		//har bestilling til etasje over den den er i
-		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+	//har bestilling til etasje over den den er i
+	if(is_order_above(last_floor_been_in)){
+		return DIRN_UP;
+	}
+	//har bestilling til etasje under den den er i
+	else if(is_order_below(last_floor_been_in)){
+		return DIRN_DOWN;
+	}
+
+	//retning etter emergency stop mellom etasjer:
+	else if((is_order(BUTTON_UP, last_floor_been_in)
+		||is_order(BUTTON_DOWN, last_floor_been_in)||is_order(BUTTON_COM, last_floor_been_in))
+			&&get_is_emergency_outside_floor()){
+			//nå tilsvarer currdir direction før nødstopp
+		set_is_emergency_outside_floor(false);
+		if(current_direction==DIRN_UP){
+			return DIRN_DOWN;
+		}
+		else if(current_direction==DIRN_DOWN){
 			return DIRN_UP;
 		}
 	}
-	//else:
-	for (int i = 0; i < prev_floor; i++) {
-		//har bestilling til etasje under den den er i
-		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
-			return DIRN_DOWN;
-		}
-	}
+
+	//kommer hit kun i spesialtilfellet at den netopp har hatt emergency stop mellom etasjer OG
+	// at den så bestilles til etasjen den var i rett før emerg.
+	//Men, siden retning på motoren fysisk kun settes EN gang i event_queue_not_empty() har det ikke noe å si.
+	//Eventuelt kan den også gå hit ved andre uoppdagede bugs.
 	return DIRN_STOP;
 }

@@ -34,6 +34,13 @@ void empty_queue();
 //sjekker knappen _i køen_, om den er bestilt dit
 bool is_order(button_type button, int floor);
 
+//ordre over?
+bool is_order_above(int current_floor);
+
+//ordre under?
+bool is_order_below(int current_floor);
+
+//for test
 void print_queue();
 
 #endif /* queue_h */

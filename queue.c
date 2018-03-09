@@ -61,6 +61,29 @@ bool is_order(button_type button, int floor) {
     return queue[floor][button];
 }
 
+//forutsetter at current_floor!=-1
+bool is_order_above(int current_floor){
+	for (int i = current_floor + 1; i < N_FLOORS; i++) {
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+//forutsetter at current_floor!=-1
+bool is_order_below(int current_floor){
+	for (int i = current_floor - 1; i >= 0; i--) {
+		if (is_order(BUTTON_UP, i) || is_order(BUTTON_COM, i) || is_order(BUTTON_DOWN, i)) {
+			return true;
+		}
+	}
+	return false;
+}
+
+
+
+
 void print_queue(){
     int yes=0;
     for (int i = 0;i<4;i++){

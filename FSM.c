@@ -14,17 +14,31 @@
 #include "queue.h"
 #include "lamps.h"
 static  State state;
+static bool is_emergency_outside_floor;
 
 void initialize_state() {
 	state = stop;
 }
 
+void initialize_is_emergency_outside_floor(){
+	is_emergency_outside_floor=false;
+}
+
+bool get_is_emergency_outside_floor(){
+	return is_emergency_outside_floor;
+}
+
+void set_is_emergency_outside_floor(bool set){
+	is_emergency_outside_floor = set;
+}
+
 void event_emergency_stop_pushed() {
     state = emergency_stop;
     elev_set_motor_direction(DIRN_STOP);
+    //EGEN FUNK????
     elev_set_stop_lamp(1);
     turn_off_all_button_lights();
-    
+
     if (elev_get_floor_sensor_signal() >= 0) {
     	elev_set_door_open_lamp(1);
     }
@@ -39,6 +53,7 @@ void event_emergency_stop_pushed() {
     }
     else{
         state = stop;
+        set_is_emergency_outside_floor(true);
     }
 }
 
@@ -72,15 +87,6 @@ void event_queue_is_empty() {
     }
 }
 
-void z_drive(elev_motor_direction_t current_direction){
-		//vi trenger en funksjon get_direction() 
-		elev_set_motor_direction(current_direction);
-		state = drive;
-}
-
-void z_stop(){
-	elev_set_motor_direction(DIRN_STOP);
-}
 
 void event_queue_not_empty(elev_motor_direction_t current_direction) {
     switch (state) {
@@ -126,4 +132,21 @@ void event_stop_door_open() {
     seccounter();
     elev_set_door_open_lamp(1);
 
+}
+
+void z_drive(elev_motor_direction_t current_direction){
+		//vi trenger en funksjon get_direction() 
+		elev_set_motor_direction(current_direction);
+		state = drive;
+}
+
+void z_stop(){
+	elev_set_motor_direction(DIRN_STOP);
+}
+
+
+int update_floor_and_light(int current_floor){
+	//EGEN FUNK????
+	elev_set_floor_indicator(current_floor);
+	return current_floor;
 }

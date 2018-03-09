@@ -13,15 +13,12 @@
 #include <stdbool.h>
 
 
-
-//returnerer opp eller ned, evt stopp avhengig av om etg er over eller under den heisen er i
-elev_motor_direction_t get_direction(int prev_floor);
-
 //sjekker om heisen skal stoppe i current etasje
 //dvs. om floor ligger i køen, i riktig retning
-bool reached_floor_to_stop_in(elev_motor_direction_t current_direction);
+bool reached_floor_to_stop_in(elev_motor_direction_t current_direction, int current_floor);
 
-
+//returnerer opp eller ned, evt stopp avhengig av om etg er over eller under den heisen er i
+elev_motor_direction_t get_direction(elev_motor_direction_t current_direction, int last_floor_been_in);
 
 
 #endif /* handling_h */
