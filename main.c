@@ -32,24 +32,27 @@ int main() {
 	initialize_state();
 
 	// beholder etter initialisering. startbetingelse
-	elev_set_motor_direction(DIRN_STOP);
+	//elev_set_motor_direction(DIRN_STOP);
 	elev_motor_direction_t current_direction = DIRN_STOP;
 	int prev_floor = 0; //antar at start i 1. etasje
 	//------------------------------------------------------------------------------
     
 	while (1) {
-		
+		//nødstopp:
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
+
 		//oppdaterer prev_floor:
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
- 
+		//oppdaterer etasjelys:
+ 		elev_set_floor_indicator(prev_floor);
+
 		//sjekker hele tiden om og hvilken knapp som er trykket
 		//og setter køen vha add_to_queue()
-		//skal kun sjekke knappetrykk og legge til i køen
+		//skal kun sjekke knappetrykk og legge til i køen, ikke håndtere
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
 				elev_button_type_t knapp = (elev_button_type_t) j;
@@ -73,7 +76,6 @@ int main() {
 		
 
 		if(reached_floor_to_stop_in(current_direction)){
-            printf("går inn i if-en! ");
 			event_reached_floor();
 		} 
 

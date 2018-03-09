@@ -12,6 +12,7 @@
 #include <unistd.h>
 #include "elev.h"
 #include "queue.h"
+#include "lamps.h"
 static  State state;
 
 void initialize_state() {
@@ -19,15 +20,22 @@ void initialize_state() {
 }
 
 void event_emergency_stop_pushed() {
-    
+    state = emergency_stop;
     elev_set_motor_direction(DIRN_STOP);
+    elev_set_stop_lamp(1);
+    turn_off_all_button_lights();
+    
+    if (elev_get_floor_sensor_signal() >= 0) {
+    	elev_set_door_open_lamp(1);
+    }
+
+    while(elev_get_stop_signal() == 1){}
+    elev_set_stop_lamp(0);
     empty_queue();
+
     if (elev_get_floor_sensor_signal() >= 0) {
         event_stop_door_open();
-        //start = start_timer();
         state = stop_door_open;
-        
-        
     }
     else{
         state = stop;
@@ -36,19 +44,18 @@ void event_emergency_stop_pushed() {
 
 void event_button_pushed(int floor, button_type button) {
     switch (state) {
-            
         case (emergency_stop):
             break;
         case (stop_door_open):
         case(stop):
         case(drive):
+        	turn_button_lamp_on(floor,button);
             add_to_queue(floor, button);
             break;
     }
 }
 void event_queue_is_empty() {
     switch (state) {
-            
         case (emergency_stop):
             break;
         case (stop_door_open):
@@ -83,17 +90,9 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
             if ( seccounter() >= 3){
                 elev_set_door_open_lamp(0);
                 state = stop;
-                
-            }
-            else if (seccounter() < 3){
-                printf("mindre");
             }
             break;
         case (drive):
-            /*if (reached_floor_to_stop_in()) {
-             z_stop();
-             event_stop_door_open();
-             }*/
             break;
         case (stop):
             z_drive(current_direction);
@@ -114,6 +113,7 @@ void event_reached_floor() {
         case(stop_door_open):
             printf("State: stop door open \n");
             event_stop_door_open();
+            turn_button_lamps_off(elev_get_floor_sensor_signal());
             remove_from_queue(elev_get_floor_sensor_signal());
             state = stop_door_open;
             break;
