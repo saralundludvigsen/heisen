@@ -8,20 +8,15 @@
 #pragma once
 #ifndef queue_h
 #define queue_h
+//QUEUE
 
-#include <stdio.h>
-#include <stdbool.h>
-#include "FSM.h"
-#include "elev.h"
-#define N_BUTTONS 3
 
-/*
 //initialiserer køen, dvs. setter alle elementene til 0.
 void initialize_queue();
 
 //if button is pushed, call this function
 //NB 0-indeksert floor
-void add_to_queue(button_type button, int floor);
+void add_to_queue(int floor, button_type button);
 
 //Fjerner en etasje fra køen.
 //Dvs. setter alle 3 knapper i kø til 0
@@ -35,6 +30,7 @@ void empty_queue();
 
 //sjekker knappen _i køen_, om den er bestilt dit
 bool is_order(button_type button, int floor);
-*/
+
+void print_queue();
 
 #endif /* queue_h */

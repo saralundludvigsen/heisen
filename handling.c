@@ -9,6 +9,12 @@
 #include "handling.h"
 #include "FSM.h"
 
+#include <stdio.h>
+#include <stdbool.h>
+
+#include "elev.h"
+#include "queue.h"
+
 
 bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	int current_floor = elev_get_floor_sensor_signal();
@@ -25,7 +31,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 	//BUTTON_UP og BUTTON_DOWN:
 	//her bryr vi oss om retning til heisen.
 	else if (is_order(BUTTON_DOWN, current_floor) && current_direction == DIRN_DOWN) {
-		printf("DOWN dir and button\n");
+		printf("DOWN dir and button\n");l
 		return true;
 	}
 	else if (is_order(BUTTON_UP, current_floor) && current_direction == DIRN_UP) {

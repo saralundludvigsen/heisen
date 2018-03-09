@@ -10,11 +10,6 @@
 #ifndef handling_h
 #define handling_h
 
-#include <stdio.h>
-#include <stdbool.h>
-
-#include "elev.h"
-#include "queue.h"
 
 
 
