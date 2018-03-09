@@ -34,6 +34,13 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction, int curr
 		return true;
 	}
 
+	//spesialtilfelle ved oppstart av programmet, og bestilling med UP/DOWN fra oppstartsetasje
+	else if ((is_order(BUTTON_UP, current_floor) || is_order(BUTTON_DOWN, current_floor)) && current_direction == DIRN_STOP) {
+		printf("BAMM\n");
+		return true;
+	}
+
+
 	//dersom den kjører OPP og denne bestillingen er NED og den ØVERSTE: return true.
 	else if ((current_direction == DIRN_UP) && is_order(BUTTON_DOWN, current_floor)) {
 		//ned i 4 etg:

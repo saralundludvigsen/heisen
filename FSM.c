@@ -61,9 +61,10 @@ void event_button_pushed(int floor, button_type button) {
     switch (state) {
         case (emergency_stop):
             break;
-        case (stop_door_open):
+        /*case (stop_door_open):
         case(stop):
-        case(drive):
+        case(drive):*/
+        default:
         	turn_button_lamp_on(floor,button);
             add_to_queue(floor, button);
             break;
@@ -74,15 +75,15 @@ void event_queue_is_empty() {
         case (emergency_stop):
             break;
         case (stop_door_open):
-            
             if (seccounter() >= 3){
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
            
             break;
-        case (drive):
-        case (stop):
+        /*case (drive):
+        case (stop):*/
+        default:
             break;
     }
 }
@@ -109,15 +110,11 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 void event_reached_floor() {
     switch(state){
         case(emergency_stop):
-            printf("State: emergency stop \n");
             break;
         case(drive):
-            printf("State: drive \n");
         case(stop):
-            printf("State: stop \n");
             z_stop();
         case(stop_door_open):
-            printf("State: stop door open \n");
             event_stop_door_open();
             turn_button_lamps_off(elev_get_floor_sensor_signal());
             remove_from_queue(elev_get_floor_sensor_signal());
@@ -127,8 +124,7 @@ void event_reached_floor() {
 }
 
 void event_stop_door_open() {
-    //Hold døra åpen i 3 sek
-    //dette går ikke
+    //Åper døra og starter counter
     seccounter();
     elev_set_door_open_lamp(1);
 

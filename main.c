@@ -60,18 +60,7 @@ int main() {
 				}
 			}
 		}
-        
-        //print_queue();
-	
-		if (current_direction == DIRN_UP) {
-			printf(" UP ");
-		}
-		if (current_direction == DIRN_DOWN) {
-			printf(" DOWN ");
-		}
-		if (current_direction == DIRN_STOP) {
-			printf(" STOP ");
-		}
+
 
 		if(reached_floor_to_stop_in(current_direction, current_floor)){
 			event_reached_floor();
