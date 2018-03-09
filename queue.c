@@ -7,10 +7,9 @@
 //
 #include "queue.h"
 #include <stdio.h>
-#include <stdbool.h>
 #include "FSM.h"
 #include "elev.h"
-#define N_BUTTONS 3
+
 
 //kø-matrise
 static int queue[N_FLOORS][N_BUTTONS];

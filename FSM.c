@@ -30,7 +30,7 @@ void event_emergency_stop_pushed() {
         
     }
     else{
-        state = emergency_stop;
+        state = stop;
     }
 }
 
@@ -46,7 +46,6 @@ void event_button_pushed(int floor, button_type button) {
             break;
     }
 }
-static int now = 0;
 void event_queue_is_empty() {
     switch (state) {
             
@@ -58,10 +57,7 @@ void event_queue_is_empty() {
                 elev_set_door_open_lamp(0);
                 state = stop;
             }
-            else if ((seccounter() < 3) && now == 0){
-                printf("mindre \n");
-                now++;
-            }
+           
             break;
         case (drive):
         case (stop):
@@ -106,7 +102,6 @@ void event_queue_not_empty(elev_motor_direction_t current_direction) {
 }
 
 void event_reached_floor() {
-    printf("in it \n");
     switch(state){
         case(emergency_stop):
             printf("State: emergency stop \n");
@@ -126,7 +121,6 @@ void event_reached_floor() {
 }
 
 void event_stop_door_open() {
-    printf("in event_stop_door_open \n");
     //Hold døra åpen i 3 sek
     //dette går ikke
     seccounter();

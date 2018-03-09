@@ -6,10 +6,11 @@
 //  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
 //
 
-#pragma once
+//#pragma once
 #ifndef handling_h
 #define handling_h
-
+#include "elev.h"
+#include <stdbool.h>
 
 
 

@@ -5,16 +5,12 @@
 //  Created by Sara Lund Ludvigsen on 23.02.2018.
 //
 //
-#pragma once
+//#pragma once
 #ifndef FSM_h
 #define FSM_h
-#include <time.h>
-
-#include <stdio.h>
-#include <unistd.h>
-#include "timer.h"
 #include "elev.h"
-#include "queue.h"
+
+
 
 
 typedef enum states {

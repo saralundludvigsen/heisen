@@ -6,10 +6,11 @@
 //
 //
 
-#ifndef elev_h
-#define elev_h
+//#ifndef elev_h
+//#define elev_h
 
-#include <stdio.h>
+
+//#include <stdio.h>
 // Wrapper for libComedi Elevator control.
 // These functions provides an interface to the elevators in the real time lab
 //
@@ -134,4 +135,4 @@ void elev_set_button_lamp(elev_button_type_t button, int floor, int value);
 
 
 #endif // #ifndef __INCLUDE_DRIVER_H__
-#endif /* elev_h */
+//#endif /* elev_h */
