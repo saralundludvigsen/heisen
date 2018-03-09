@@ -1,5 +1,7 @@
 #include "lamps.h"
 #include "elev.h" //pga N_FLOORS
+
+
 void turn_button_lamp_on(int floor, button_type button){
 	elev_set_button_lamp(button, floor, 1);
 }
