@@ -76,11 +76,7 @@ bool reached_floor_to_stop_in(elev_motor_direction_t current_direction) {
 			return true;
 		}
 	}
-
-	else {
-		//printf("other\n");
-		return false;
-	}
+	return false;
 
 }
 
