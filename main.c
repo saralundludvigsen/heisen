@@ -38,8 +38,7 @@ int main() {
 	//------------------------------------------------------------------------------
     
 	while (1) {
-		//sjekker hele tiden om og hvilken knapp som er trykket
-		//og setter køen vha add_to_queue()
+		
 		if (elev_get_stop_signal() == 1) {
 			event_emergency_stop_pushed();
 		}
@@ -47,10 +46,9 @@ int main() {
 		if (elev_get_floor_sensor_signal() != -1) {
 			prev_floor = elev_get_floor_sensor_signal();
 		}
-		current_direction = get_direction(prev_floor, current_direction);
-		//current_direction = get_direction(prev_floor, current_direction);
  
-        
+		//sjekker hele tiden om og hvilken knapp som er trykket
+		//og setter køen vha add_to_queue()
 		//skal kun sjekke knappetrykk og legge til i køen
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
@@ -72,25 +70,18 @@ int main() {
 		if (current_direction == DIRN_STOP) {
 			printf(" STOP ");
 		}*/
+		
+
 		if(reached_floor_to_stop_in(current_direction)){
             printf("går inn i if-en! ");
 			event_reached_floor();
-		}
+		} 
 
-		/*else*/ if (!queue_is_empty()){
-			//Her bare tester man om det har blitt lagt til noe i queue
-			//event_queue_not_empty();
-            //test: current_direction=DIRN_UP; //FUNKER
-			current_direction = get_direction(prev_floor, current_direction); //funker ish
-			//får UP STOP UP STOP når man vil opp fra første etg
+		else if (!queue_is_empty()){
+			//kjør hvis lagt til noe i queue
+			current_direction = get_direction(prev_floor); //funker!!!!
             event_queue_not_empty(current_direction);
 
-			
-
-			//test: elev_set_motor_direction(DIRN_UP);
-
-			//event_queue_not_empty(direction);
-			//event_drive hit
 		}
 		else if (queue_is_empty()){
 			event_queue_is_empty();

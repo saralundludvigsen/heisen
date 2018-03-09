@@ -1,19 +1,33 @@
-//
-//  timer.c
-//  timer
-//
-//  Created by Sara Lund Ludvigsen on 06.03.2018.
-//  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
-//
 
 #include "timer.h"
+#include <time.h>
+static int toggle;
+static time_t start;
 
-clock_t start_timer(){
-    clock_t start = clock();
-    return start;
-}
 
-clock_t current_time(){
-    clock_t curr = clock();
-    return curr;
+int seccounter(void){
+    
+    time_t finish = 0;
+    time_t difference = 0;
+    
+    if (toggle == 0){
+        start = time(0);
+        toggle = 1;
+        return 0;
+    }
+    
+    else if (toggle == 1){
+        
+        finish = time(0);
+        difference = finish - start;
+        if ((int) difference >= 3){
+            toggle = 0;
+            return (int) difference;
+        }
+        else{
+            return (int) difference;
+        }
+   } 
+   return 0;
+    
 }

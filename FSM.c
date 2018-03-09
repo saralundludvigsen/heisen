@@ -7,11 +7,11 @@
 //
 
 #include "FSM.h"
-static int previous_floor;
-static time_t start;
-static int toggle = 0;
-static int nox = 0;
-
+#include "timer.h"
+#include <stdio.h>
+#include <unistd.h>
+#include "elev.h"
+//#include "queue.h"
 static  State state;
 
 void initialize_state() {
@@ -211,53 +211,4 @@ void print_queue(){
         printf("Tom kø");
     }
 }
-
-//-------------------------------------------
-//TIMER
-
-int seccounter(void){
-    
-    time_t finish = 0;
-    time_t difference = 0;
-    //int seconds = 0;
-    
-    if (toggle == 0){
-        printf("toggle = 0 \n");
-        start = time(0);
-        toggle = 1;
-        return 0;
-    }
-    
-    else if (toggle == 1){
-        if (nox == 0){
-            printf("toggle = 1 \n");
-            nox++;
-        }
-        
-        finish = time(0);
-        difference = finish - start;
-        if ((int) difference >= 3){
-            //printf("difference larger then 3, toggle = 0");
-            toggle = 0;
-            return (int) difference;
-        }
-        else{
-            //printf("difference smaller then 3, toggle = 1");
-            return (int) difference;
-        }
-    }
-    
-}
-
-
-clock_t start_timer(){
-    clock_t start = clock();
-    return start;
-}
-
-clock_t current_time(){
-    clock_t curr = clock();
-    return curr;
-}
-
 
