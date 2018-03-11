@@ -1,8 +1,4 @@
-//
-//  main2.c
-//  
-//
-//  Created by Sara Lund Ludvigsen on 23.02.2018.
+//main.c
 //
 //
 
@@ -13,12 +9,6 @@
 #include "queue.h"
 #include "handling.h"
 #include "lamps.h"
-
-
-//i FSM:
-//direction current_dir;
-//get_direction()
-
 
 int main() {
 

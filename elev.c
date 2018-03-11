@@ -2,11 +2,9 @@
 //  elev.c
 //  
 //
-//  Created by Sara Lund Ludvigsen on 23.02.2018.
 //
 //
 
-//Cold cold heart
 #include "elev.h"
 
 // Wrapper for libComedi Elevator control.
@@ -63,6 +61,7 @@ int elev_init(void) {
 	elev_set_door_open_lamp(0);
 	elev_set_floor_indicator(0);
 
+	//Added functionality: Kjør ned til nærmeste etasje dersom den ikke allerede er det.
 	if (elev_get_floor_sensor_signal() == -1){
 		elev_set_motor_direction(DIRN_DOWN);
 		while(elev_get_floor_sensor_signal() == -1){}

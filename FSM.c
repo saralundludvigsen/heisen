@@ -2,7 +2,6 @@
 //  FSM.c
 //  
 //
-//  Created by Sara Lund Ludvigsen on 23.02.2018.
 //
 //
 

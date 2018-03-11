@@ -2,15 +2,9 @@
 //  elev.h
 //  
 //
-//  Created by Sara Lund Ludvigsen on 23.02.2018.
 //
 //
 
-//#ifndef elev_h
-//#define elev_h
-
-
-//#include <stdio.h>
 // Wrapper for libComedi Elevator control.
 // These functions provides an interface to the elevators in the real time lab
 //

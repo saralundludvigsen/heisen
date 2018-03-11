@@ -1,12 +1,7 @@
 //
 //  handling.h: handling motor direction
-//  Heis
-//
-//  Created by Sara Lund Ludvigsen on 27.02.2018.
-//  Copyright © 2018 Sara Lund Ludvigsen. All rights reserved.
 //
 
-//#pragma once
 #ifndef handling_h
 #define handling_h
 #include "elev.h"

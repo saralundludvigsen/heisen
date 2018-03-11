@@ -2,10 +2,8 @@
 //  FSM.h
 //  
 //
-//  Created by Sara Lund Ludvigsen on 23.02.2018.
 //
 //
-//#pragma once
 #ifndef FSM_h
 #define FSM_h
 #include "elev.h"
