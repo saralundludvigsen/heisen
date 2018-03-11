@@ -27,3 +27,9 @@ void turn_off_all_button_lights(){
 		turn_button_lamps_off(i);
 	}
 }
+
+
+int update_floor_and_light(int current_floor){
+	elev_set_floor_indicator(current_floor);
+	return current_floor;
+}

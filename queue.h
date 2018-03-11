@@ -40,7 +40,5 @@ bool is_order_above(int current_floor);
 //ordre under?
 bool is_order_below(int current_floor);
 
-//for test
-void print_queue();
 
 #endif /* queue_h */

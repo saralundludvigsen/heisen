@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "queue.h"
 #include "handling.h"
+#include "lamps.h"
 
 
 //i FSM:
@@ -20,7 +21,6 @@
 
 
 int main() {
-	printf("Programmet kjører!");
 
 	if (elev_init() == 0) {
 		printf("Unable to initialize elevator hardware!\n");
@@ -31,12 +31,14 @@ int main() {
 	initialize_state();
 	initialize_is_emergency_outside_floor();
 
+	//initialiserer variabler:
 	elev_motor_direction_t current_direction = DIRN_STOP;
-	int last_floor_been_in = 0; //oppdateres med en gang i while dersom etg!=-1. Så ok.
+	int last_floor_been_in = 0; //oppdateres med en gang i while dersom etg!=-1. Dvs ok.
 	int current_floor = 0; //er -1 når utenfor etasje
 	//------------------------------------------------------------------------------
     
 	while (1) {
+		//oppdaterer current floor
 		current_floor = elev_get_floor_sensor_signal();
 
 		//nødstopp:
@@ -48,9 +50,9 @@ int main() {
 		if (current_floor != -1) {
 			last_floor_been_in = update_floor_and_light(current_floor);
 		}		
+
 		//sjekker hele tiden om og hvilken knapp som er trykket
-		//og setter køen vha add_to_queue()
-		//skal kun sjekke knappetrykk og legge til i køen, ikke håndtere
+		//skal kun sjekke knappetrykk og legge til i køen, ikke håndtere bestillingene
 		for(int i = 0; i < N_FLOORS; i++){
 			for(int j = 0; j < N_BUTTONS; j++){
 				elev_button_type_t knapp = (elev_button_type_t) j;
@@ -63,13 +65,12 @@ int main() {
 
 
 		if(reached_floor_to_stop_in(current_direction, current_floor)){
-			event_reached_floor();
+			event_reached_floor_to_stop_in();
 		} 
 
 		else if (!queue_is_empty()){
 			//kjør hvis lagt til noe i queue
-			current_direction = get_direction(current_direction, last_floor_been_in); //funker!!!!
-
+			current_direction = get_direction(current_direction, last_floor_been_in);
             event_queue_not_empty(current_direction);
 
 		}
